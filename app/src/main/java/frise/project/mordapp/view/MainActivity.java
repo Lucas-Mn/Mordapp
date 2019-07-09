@@ -1,8 +1,10 @@
-package frise.project.mordapp;
+package frise.project.mordapp.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import frise.project.mordapp.R;
 
 public class MainActivity extends AppCompatActivity {
 
