@@ -18,10 +18,12 @@ import frise.project.mordapp.model.Item;
 public class AdapterWpn extends RecyclerView.Adapter {
 
     private List<Item> items;
+    private Listener listener;
 
-    public AdapterWpn(List<Item> items)
+    public AdapterWpn(List<Item> items, Listener listener)
     {
         this.items = items;
+        this.listener = listener;
     }
 
     @NonNull
@@ -34,9 +36,15 @@ public class AdapterWpn extends RecyclerView.Adapter {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int position) {
         WpnViewHolder vh = (WpnViewHolder) holder;
         vh.bind(items.get(position));
+        vh.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                listener.onClick(items.get(position));
+            }
+        });
     }
 
     @Override
@@ -59,4 +67,7 @@ public class AdapterWpn extends RecyclerView.Adapter {
             name.setText(item.getName());
         }
     }
+
+    public interface Listener
+    { void onClick(Item item); }
 }

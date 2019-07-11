@@ -1,6 +1,9 @@
 package frise.project.mordapp.view;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -9,40 +12,37 @@ import android.util.Log;
 import android.widget.Toast;
 
 import frise.project.mordapp.R;
+import frise.project.mordapp.model.Item;
 import frise.project.mordapp.model.RowContainer;
 import frise.project.mordapp.retrofit.HELPER;
 import frise.project.mordapp.retrofit.ItemDAO;
 import frise.project.mordapp.retrofit.ResultListener;
 
-public class ActivityWeaponList extends AppCompatActivity {
-
-    RecyclerView recycler;
-    RecyclerView.LayoutManager layoutManager;
-    RecyclerView.Adapter adapter;
+public class ActivityWeaponList extends AppCompatActivity
+implements AdapterWpn.Listener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weapon_list);
 
-        recycler = findViewById(R.id.act_list_recycler);
-        layoutManager = new LinearLayoutManager(this);
-        recycler.setLayoutManager(layoutManager);
+        pegarFragment(new FragWpnList());
+    }
 
-        ItemDAO dao = new ItemDAO();
-        dao.getRowContainer(new ResultListener<RowContainer>() {
-            @Override
-            public void finish(RowContainer container) {
+    void pegarFragment(Fragment frag)
+    {
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        ft.replace(R.id.act_main_container, frag);
+        ft.commit();
+    }
 
-                Toast.makeText(ActivityWeaponList.this, container.toString(), Toast.LENGTH_LONG)
-                        .show();
-                Log.d(HELPER.DEBUG, container.toString());
-                adapter = new AdapterWpn(container.getItems());
-                recycler.setAdapter(adapter);
-            }
-        });
-
-
-
+    @Override
+    public void onClick(Item item) {
+        Fragment frg = new FragWpnList();
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(FragWpnDetail.TAG_WEAPON, item);
+        frg.setArguments(bundle);
+        pegarFragment(frg);
     }
 }
