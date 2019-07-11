@@ -1,6 +1,5 @@
 package frise.project.mordapp.model;
 
-import android.inputmethodservice.Keyboard;
 import android.util.Log;
 
 import java.util.ArrayList;

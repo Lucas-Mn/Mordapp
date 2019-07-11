@@ -29,27 +29,27 @@ public class Item implements Serializable {
         name = row.getName();
         pos = row.getPos();
         cost = row.getCost();
-        if(row.getMode()==Row.MODES_REGULAR)
-            if(row.getAttackType()==Attack.STRIKE)
+        if(row.getMode().equals(Row.MODES_REGULAR))
+            if(row.getAttackType().equals(Attack.STRIKE))
                 strike = row.getAttack();
-            else if(row.getAttackType()==Attack.STAB)
+            else if(row.getAttackType().equals(Attack.STAB))
                 stab = row.getAttack();
         else
-            if(row.getAttackType()==Attack.STRIKE)
+            if(row.getAttackType().equals(Attack.STRIKE))
                 alt_strike = row.getAttack();
-            else if(row.getAttackType()==Attack.STAB)
+            else if(row.getAttackType().equals(Attack.STAB))
                 alt_stab = row.getAttack();
     }
 
     public void addRow(Row row)
     {
-        if(row.getMode()==Row.MODES_REGULAR)
-            if(row.getAttackType()==Attack.STRIKE)
+        if(row.getMode().equals(Row.MODES_REGULAR))
+            if(row.getAttackType().equals(Attack.STRIKE))
                 strike = row.getAttack();
             else
                 stab = row.getAttack();
         else
-            if(row.getAttackType()==Attack.STRIKE)
+            if(row.getAttackType().equals(Attack.STRIKE))
                 alt_strike = row.getAttack();
             else
                 alt_stab = row.getAttack();

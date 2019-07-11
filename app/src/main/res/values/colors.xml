@@ -3,7 +3,18 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorCellBackground">#121212</color>
+    <color name="colorMenuBackground">#1A1A1A</color>
     <color name="colorTextWpn">#898971</color>
     <color name="colorTextSecondary">#898971</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="colorDmg100">#311818</color>
+    <color name="colorDmgTxt100">#D07227</color>
+    <color name="colorDmgTxt50">#D07227</color>
+    <color name="colorDmgTxt34">#D9BF64</color>
+    <color name="colorDmgTxt25">#64D964</color>
+    <color name="colorDmgTxt0">#888887</color>
+    <color name="colorDmg50">#33241C</color>
+    <color name="colorDmg34">#312A21</color>
+    <color name="colorDmg25">#2A3121</color>
+    <color name="colorDmg0">#2B2A28</color>
 </resources>

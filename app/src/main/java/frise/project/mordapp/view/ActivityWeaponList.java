@@ -33,13 +33,14 @@ implements AdapterWpn.Listener {
     {
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
+        ft.addToBackStack(null);
         ft.replace(R.id.act_main_container, frag);
         ft.commit();
     }
 
     @Override
     public void onClick(Item item) {
-        Fragment frg = new FragWpnList();
+        Fragment frg = new FragWpnDetail();
         Bundle bundle = new Bundle();
         bundle.putSerializable(FragWpnDetail.TAG_WEAPON, item);
         frg.setArguments(bundle);
