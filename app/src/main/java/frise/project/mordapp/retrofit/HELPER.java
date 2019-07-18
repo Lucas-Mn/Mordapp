@@ -8,6 +8,11 @@ public class HELPER {
     public static final String ID_KEY = "id";
     public static final String SHEET_KEY = "sheet";
     public static final String QUERY_KEY = "query";
+    public static final String ROWS_KEY = "rows";
+    public static final String COLUMNS_KEY = "columns";
     public static final String DEBUG = "mydebug";
+
+    public static final String boolToYN(boolean value)
+    { return value ? "Yes" : "No"; }
 
 }

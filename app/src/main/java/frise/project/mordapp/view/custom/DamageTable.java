@@ -1,11 +1,11 @@
 package frise.project.mordapp.view.custom;
 
 import android.view.View;
-import android.widget.TableLayout;
 import android.widget.TextView;
 
 import frise.project.mordapp.R;
 import frise.project.mordapp.model.Attack;
+import frise.project.mordapp.model.RegularAttack;
 
 public class DamageTable {
 
@@ -41,5 +41,4 @@ public class DamageTable {
             lblLeg[i].setText(Integer.toString(atk.dmgLeg()[i]));
         }
     }
-
 }

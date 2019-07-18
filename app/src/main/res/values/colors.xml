@@ -7,6 +7,7 @@
     <color name="colorTextWpn">#898971</color>
     <color name="colorTextSecondary">#898971</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="colorTextLowerDetail">#929292</color>
     <color name="colorDmg100">#311818</color>
     <color name="colorDmgTxt100">#D07227</color>
     <color name="colorDmgTxt50">#D07227</color>

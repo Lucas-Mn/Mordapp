@@ -22,4 +22,37 @@
 
     </style>
 
+    <style name="TextViewLowerDetailKey">
+
+        <item name="android:text">"KEY"</item>
+        <item name="android:textColor">#929292</item>
+        <item name="android:textSize">18dp</item>
+        <item name="android:textAlignment">textEnd</item>
+        <item name="android:layout_marginRight">5dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+
+    </style>
+
+    <style name="TextViewLowerDetailValue">
+
+        <item name="android:text">"VALUE"</item>
+        <item name="android:textColor">#929292</item>
+        <item name="android:textSize">18dp</item>
+        <item name="android:textAlignment">textStart</item>
+        <item name="android:layout_marginLeft">5dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+
+    </style>
+
+    <style name="LowerStatsRow">
+
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+
+    </style>
+
 </resources>

@@ -18,24 +18,17 @@ public class TextViewDmg extends TextView {
         super(context, attrs);
         this.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) { }
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                updateText(charSequence);
-            }
+                updateText(charSequence); }
 
             @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
+            public void afterTextChanged(Editable editable) { }});
     }
 
-    private void updateText(CharSequence text)
-    {
+    private void updateText(CharSequence text) {
         String s = text.toString();
         Integer value = Integer.parseInt(s);
         Resources res = getContext().getResources();
@@ -55,5 +48,4 @@ public class TextViewDmg extends TextView {
             setBackgroundColor(res.getColor(R.color.colorDmg0));
             setTextColor(res.getColor(R.color.colorDmgTxt0)); }
     }
-
 }

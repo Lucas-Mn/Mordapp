@@ -21,11 +21,14 @@ public class ItemDAO extends MyRetrofit {
 
     public void getRowContainer(final ResultListener<RowContainer> listener)
     {
-        Call<RowContainer> call = service.getRows(HELPER.GSID);
+        Call<RowContainer> call = service.getRows(HELPER.GSID, false);
         call.enqueue(new Callback<RowContainer>() {
             @Override
             public void onResponse(Call<RowContainer> call, Response<RowContainer> response) {
-                listener.finish(response.body());
+                if(response.body()!=null)
+                    listener.finish(response.body());
+                else
+                    Log.d(HELPER.DEBUG, "response with null body, message: " + response.message());
             }
 
             @Override

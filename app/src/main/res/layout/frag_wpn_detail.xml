@@ -21,6 +21,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <Button
+            android:id="@+id/frag_wpn_detail_btn_alt"
+            android:text="ALT"
+            android:layout_toLeftOf="@id/frag_wpn_detail_btn_strike"
+            android:layout_marginRight="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
         <ImageView
             android:id="@+id/frag_wpn_detail_btn_strike"
             android:src="@drawable/btn_toggle_strike_off"
@@ -49,7 +57,7 @@
         android:id="@+id/frag_wpn_detail_table_layout"
         android:layout_margin="25dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <TableRow
             android:layout_margin="5dp"
@@ -209,5 +217,10 @@
 
         </TableRow>
     </TableLayout>
+
+    <FrameLayout
+        android:id="@+id/frag_wpn_detail_lower_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></FrameLayout>
 
 </LinearLayout>

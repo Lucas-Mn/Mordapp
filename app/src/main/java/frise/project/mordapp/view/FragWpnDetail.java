@@ -8,18 +8,23 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import frise.project.mordapp.R;
+import frise.project.mordapp.controller.WpnDetailManager;
 import frise.project.mordapp.model.Item;
+import frise.project.mordapp.model.RegularAttack;
 import frise.project.mordapp.view.custom.AttackTypeToggler;
 import frise.project.mordapp.view.custom.DamageTable;
+import frise.project.mordapp.view.custom.LowerDetailView;
+import frise.project.mordapp.view.custom.LowerDetailViewRegular;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FragWpnDetail extends Fragment
-implements AttackTypeToggler.Listener {
+public class FragWpnDetail extends Fragment {
 
     public static final String TAG_WEAPON = "weapon";
 
@@ -28,6 +33,9 @@ implements AttackTypeToggler.Listener {
     private TextView lblName;
     private DamageTable table;
     private AttackTypeToggler togglerAtk;
+    private Button btnAlt;
+
+    private WpnDetailManager wpnManager;
 
     public FragWpnDetail() {
         // Required empty public constructor
@@ -43,28 +51,26 @@ implements AttackTypeToggler.Listener {
         Bundle bundle = getArguments();
         item = (Item) bundle.getSerializable(TAG_WEAPON);
 
-        //find views
+        //region find views
         lblName = view.findViewById(R.id.frag_wpn_detail_name);
         table = new DamageTable(view.findViewById(R.id.frag_wpn_detail_table_layout));
-        togglerAtk = new AttackTypeToggler(
-                view.findViewById(R.id.frag_wpn_detail_btn_strike),
-                view.findViewById(R.id.frag_wpn_detail_btn_stab),
-                        this);
+        btnAlt = view.findViewById(R.id.frag_wpn_detail_btn_alt);
+        //endregion
 
-        //update views
+        //region update views
         lblName.setText(item.getName());
-        table.setValues(item.getStrike());
+        btnAlt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                toggleAlt(); }});
+        //endregion
+
+        wpnManager = new WpnDetailManager(view, item);
 
         return view;
     }
 
-    @Override
-    public void strike() {
-        table.setValues(item.getStrike());
-    }
-
-    @Override
-    public void stab() {
-        table.setValues(item.getStab());
+    private void toggleAlt() {
+        wpnManager.toggleMode();
     }
 }

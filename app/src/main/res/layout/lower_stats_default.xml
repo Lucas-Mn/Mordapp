@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TableRow
+        style="@style/LowerStatsRow">
+
+        <TextView
+            android:text="Length"
+            style="@style/TextViewLowerDetailKey" />
+
+        <TextView
+            android:id="@+id/stats_default_length"
+            style="@style/TextViewLowerDetailValue" />
+
+    </TableRow>
+
+    <TableRow
+        style="@style/LowerStatsRow">
+
+        <TextView
+            android:text="Block View Tolerances"
+            android:layout_gravity="center_vertical"
+            style="@style/TextViewLowerDetailKey" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:src="@drawable/thumbnail_stat_blockview_up"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/stats_default_blockview_up"
+                    style="@style/TextViewLowerDetailValue"
+                    android:layout_width="match_parent"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:src="@drawable/thumbnail_stat_blockview_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/stats_default_blockview_horizontal"
+                    style="@style/TextViewLowerDetailValue"
+                    android:layout_width="match_parent"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:src="@drawable/thumbnail_stat_blockview_down"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/stats_default_blockview_down"
+                    style="@style/TextViewLowerDetailValue"
+                    android:layout_width="match_parent"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </TableRow>
+
+    <TableRow>
+
+        <TextView
+            android:text="Turn Cap"
+            android:layout_gravity="center_vertical"
+            style="@style/TextViewLowerDetailKey" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:src="@drawable/thumbnail_stat_turncap_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/stats_default_turncap_horizontal"
+                    style="@style/TextViewLowerDetailValue"
+                    android:layout_width="match_parent"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:src="@drawable/thumbnail_stat_turncap_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/stats_default_turncap_vertical"
+                    style="@style/TextViewLowerDetailValue"
+                    android:layout_width="match_parent"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </TableRow>
+
+</TableLayout>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TableRow
+        style="@style/LowerStatsRow">
+
+        <TextView
+            android:text="Wood Damage"
+            style="@style/TextViewLowerDetailKey" />
+
+        <TextView
+            android:id="@+id/stats_throwable_wood_damage"
+            style="@style/TextViewLowerDetailValue" />
+
+    </TableRow>
+
+    <TableRow
+        style="@style/LowerStatsRow">
+
+        <TextView
+            android:text="Stone Damage"
+            style="@style/TextViewLowerDetailKey"/>
+
+        <TextView
+            android:id="@+id/stats_throwable_stone_damage"
+            style="@style/TextViewLowerDetailValue"/>
+
+    </TableRow>
+
+    <TableRow
+        style="@style/LowerStatsRow">
+
+        <TextView
+            android:text="Can Flinch"
+            style="@style/TextViewLowerDetailKey"/>
+
+        <TextView
+            android:id="@+id/stats_throwable_can_flinch"
+            style="@style/TextViewLowerDetailValue"/>
+
+    </TableRow>
+
+    <TableRow
+        style="@style/LowerStatsRow">
+
+        <TextView
+            android:text="Projectile Speed"
+            style="@style/TextViewLowerDetailKey"/>
+
+        <TextView
+            android:id="@+id/stats_throwable_projectile_speed"
+            style="@style/TextViewLowerDetailValue"/>
+
+    </TableRow>
+
+    <TableRow
+        style="@style/LowerStatsRow">
+
+        <TextView
+            android:text="Gravity Scale"
+            style="@style/TextViewLowerDetailKey"/>
+
+        <TextView
+            android:id="@+id/stats_throwable_gravity_scale"
+            style="@style/TextViewLowerDetailValue"/>
+
+    </TableRow>
+
+</TableLayout>

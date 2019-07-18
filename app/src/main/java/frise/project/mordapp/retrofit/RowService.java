@@ -9,6 +9,6 @@ import retrofit2.http.Query;
 public interface RowService {
 
     @GET(HELPER.API_ENDPOINT)
-    Call<RowContainer> getRows(@Query(HELPER.ID_KEY) String id);
+    Call<RowContainer> getRows(@Query(HELPER.ID_KEY) String id, @Query(HELPER.COLUMNS_KEY) Boolean columns);
 
 }

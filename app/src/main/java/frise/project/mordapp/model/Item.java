@@ -4,6 +4,9 @@ import java.io.Serializable;
 
 public class Item implements Serializable {
 
+    public static final String TYPE_WEAPON = "weapon";
+    public static final String TYPE_USEABLE = "useable";
+
     private String name;
     private int pos;
     private String type; //weapon or item
@@ -12,7 +15,7 @@ public class Item implements Serializable {
     private Attack alt_stab, alt_strike;
     private int range, alt_range;
 
-    public Item(String name, String type, int cost, Attack stab, Attack strike, Attack alt_stab, Attack alt_strike, int range, int alt_range) {
+    public Item(String name, String type, int cost, RegularAttack stab, RegularAttack strike, RegularAttack alt_stab, RegularAttack alt_strike, int range, int alt_range) {
         this.name = name;
         this.type = type;
         this.cost = cost;
@@ -39,31 +42,45 @@ public class Item implements Serializable {
                 alt_strike = row.getAttack();
             else if(row.getAttackType().equals(Attack.STAB))
                 alt_stab = row.getAttack();
+        type = row.getAttackType()=="Use"?TYPE_USEABLE:TYPE_WEAPON;
     }
 
-    public void addRow(Row row)
-    {
-        if(row.getMode().equals(Row.MODES_REGULAR))
+    public void addRow(Row row) {
+        if(row.getMode().equals(Row.MODES_REGULAR)){
             if(row.getAttackType().equals(Attack.STRIKE))
                 strike = row.getAttack();
-            else
+            else if(row.getAttackType().equals(Attack.STAB))
                 stab = row.getAttack();
-        else
+            else if(row.getAttackType().equals(ThrownAttack.TYPE))
+                strike = row.getAttack(); }
+        else if(row.getMode().equals(Row.MODES_ALT)) {
             if(row.getAttackType().equals(Attack.STRIKE))
                 alt_strike = row.getAttack();
-            else
+            else if(row.getAttackType().equals(Attack.STAB))
                 alt_stab = row.getAttack();
+            else if(row.getAttackType().equals(ThrownAttack.TYPE))
+                alt_strike = row.getAttack(); }
     }
 
+    //region gets
     public String getName(){return name;}
     public int getPos(){return pos;}
     public String getType(){return type;}
     public int getCost(){return cost;}
-    public Attack getStab(){return stab;}
-    public Attack getStrike(){return strike;}
-    public Attack getAltStab(){return alt_stab;}
-    public Attack getAltStrike(){return alt_strike;}
     public int getRange(){return range;}
     public int getAltRange(){return alt_range;}
+    //endregion
+
+    public enum MODE { REGULAR, ALT; }
+    public enum ATK_TYPE { STRIKE, STAB; }
+    public Attack getAttack(MODE mode, ATK_TYPE type) {
+        if(mode == MODE.REGULAR)
+            if(type == ATK_TYPE.STRIKE)
+                return strike;
+            else return stab;
+        else if(type == ATK_TYPE.STRIKE)
+            return alt_strike;
+        else return alt_stab;
+    }
 
 }

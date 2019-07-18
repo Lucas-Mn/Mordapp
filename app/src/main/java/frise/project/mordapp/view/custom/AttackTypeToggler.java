@@ -14,8 +14,7 @@ public class AttackTypeToggler {
     private static final String STRIKE = "strike";
     private static final String STAB = "stab";
 
-    public AttackTypeToggler(View strike, View stab, Listener listener)
-    {
+    public AttackTypeToggler(View strike, View stab, Listener listener) {
         imgStrike = (ImageView) strike;
         imgStab = (ImageView) stab;
         imgStrike.setImageResource(R.drawable.btn_toggle_strike_on);
@@ -36,29 +35,32 @@ public class AttackTypeToggler {
         });
     }
 
-    private void click(String atkType)
-    {
+    private void click(String atkType) {
         if(atkType.equals(selection))
             return;
-        if(atkType.equals(STRIKE))
-        {
-            listener.strike();
+        if(atkType.equals(STRIKE)) {
+            listener.toggle();
             imgStrike.setImageResource(R.drawable.btn_toggle_strike_on);
             imgStab.setImageResource(R.drawable.btn_toggle_stab_off);
         }
-        else
-        {
-            listener.stab();
+        else {
+            listener.toggle();
             imgStrike.setImageResource(R.drawable.btn_toggle_strike_off);
             imgStab.setImageResource(R.drawable.btn_toggle_stab_on);
         }
         selection = atkType;
     }
 
-    public interface Listener
-    {
-        void strike();
-        void stab();
+    public interface Listener {
+        void toggle();
     }
 
+    public void setVisibility(boolean visible) {
+        if(!visible) {
+            imgStrike.setVisibility(View.GONE);
+            imgStab.setVisibility(View.GONE); }
+        else {
+            imgStrike.setVisibility(View.VISIBLE);
+            imgStab.setVisibility(View.VISIBLE); }
+    }
 }
