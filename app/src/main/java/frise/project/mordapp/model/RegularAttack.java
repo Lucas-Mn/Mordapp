@@ -24,7 +24,7 @@ public class RegularAttack extends Attack
 
     @Override
     public LowerDetailView getDetailView(View parentView) {
-        return new LowerDetailViewRegular(parentView, this); }
+        return new LowerDetailViewRegular(parentView); }
 
     //region constructor
     public RegularAttack(

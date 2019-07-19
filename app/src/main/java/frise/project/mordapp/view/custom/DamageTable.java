@@ -1,11 +1,13 @@
 package frise.project.mordapp.view.custom;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import frise.project.mordapp.R;
 import frise.project.mordapp.model.Attack;
 import frise.project.mordapp.model.RegularAttack;
+import frise.project.mordapp.retrofit.HELPER;
 
 public class DamageTable {
 
@@ -34,11 +36,16 @@ public class DamageTable {
 
     public void setValues(Attack atk)
     {
-        for(int i = 0; i < 4; i++)
-        {
-            lblHead[i].setText(Integer.toString(atk.dmgHead()[i]));
-            lblBody[i].setText(Integer.toString(atk.dmgChest()[i]));
-            lblLeg[i].setText(Integer.toString(atk.dmgLeg()[i]));
-        }
+        if(atk!=null)
+            for(int i = 0; i < 4; i++) {
+                lblHead[i].setText(Integer.toString(atk.dmgHead()[i]));
+                lblBody[i].setText(Integer.toString(atk.dmgChest()[i]));
+                lblLeg[i].setText(Integer.toString(atk.dmgLeg()[i])); }
+        else handleNullAttack();
+    }
+
+    private void handleNullAttack()
+    {
+        Log.d(HELPER.DEBUG, "passed null attack to DamageTable");
     }
 }

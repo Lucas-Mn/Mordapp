@@ -1,5 +1,7 @@
 package frise.project.mordapp.model;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Row {
 
     private int listposition;
@@ -7,7 +9,7 @@ public class Row {
     private int cost;
     private String handed;
     private String mode;
-    private String attack_type;
+    private String attacktype;
     private int head, chest, legs,
                 head_2, chest_2, legs_2,
                 head_3, chest_3, legs_3,
@@ -31,7 +33,7 @@ public class Row {
     public int getCost(){return cost;}
     public String getHanded(){return handed;}
     public String getMode(){return mode;}
-    public String getAttackType(){return attack_type;}
+    public String getAttackType(){return attacktype;}
     //windup to negation
     public float getTurncapHorizontal(){return tch;}
     public float getTurncapVertical(){return tcv;}
@@ -72,7 +74,7 @@ public class Row {
 
         Attack atk;
 
-        if(attack_type != ThrownAttack.TYPE)
+        if(!attacktype.equals(ThrownAttack.TYPE))
             atk = new RegularAttack(dmg_head, dmg_chest, dmg_legs
                                     ,windup, release, recovery, combo,
                                     drain, negation, miss,

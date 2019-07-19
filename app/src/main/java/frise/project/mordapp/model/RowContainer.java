@@ -20,6 +20,8 @@ public class RowContainer {
       int previous_index=0;
       for(Row row : rows)
       {
+         if(row.getPos()==0)
+            break;
          if(row.getPos()==last_pos)
          {
             list.get(previous_index).addRow(row);

@@ -39,5 +39,5 @@ public class ThrownAttack extends Attack {
 
     @Override
     public LowerDetailView getDetailView(View parentView) {
-        return new LowerDetailViewThrown(parentView, this); }
+        return new LowerDetailViewThrown(parentView); }
 }

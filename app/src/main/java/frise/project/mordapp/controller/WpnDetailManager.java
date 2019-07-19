@@ -1,15 +1,22 @@
 package frise.project.mordapp.controller;
 
+import android.icu.text.CaseMap;
 import android.view.View;
 import android.widget.FrameLayout;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import frise.project.mordapp.R;
 import frise.project.mordapp.model.Attack;
 import frise.project.mordapp.model.Item;
 import frise.project.mordapp.model.RegularAttack;
+import frise.project.mordapp.model.ThrownAttack;
 import frise.project.mordapp.view.custom.AttackTypeToggler;
 import frise.project.mordapp.view.custom.DamageTable;
 import frise.project.mordapp.view.custom.LowerDetailView;
+import frise.project.mordapp.view.custom.LowerDetailViewRegular;
+import frise.project.mordapp.view.custom.LowerDetailViewThrown;
 
 public class WpnDetailManager
 implements AttackTypeToggler.Listener {
@@ -21,7 +28,8 @@ implements AttackTypeToggler.Listener {
 
     private View view;
     private DamageTable table;
-    private LowerDetailView lowerDetailView;
+    private LowerDetailView currentDetailView;
+    private Map<String, LowerDetailView> detailViews;
     private AttackTypeToggler typeToggler;
 
     public WpnDetailManager(View view, Item item)
@@ -38,8 +46,14 @@ implements AttackTypeToggler.Listener {
                 view.findViewById(R.id.frag_wpn_detail_btn_stab),
         this);
 
-        lowerDetailView = item.getAttack(mode, Item.ATK_TYPE.STRIKE).getDetailView(view);
-        lowerDetailView.setAttack(getCurrentAttack());
+
+        detailViews = new HashMap<>();
+        detailViews.put(RegularAttack.TYPE, new LowerDetailViewRegular(view));
+        detailViews.put(ThrownAttack.TYPE, new LowerDetailViewThrown(view));
+        selectDetailView(getCurrentAttack().getType());
+
+//        lowerDetailView = item.getAttack(mode, Item.ATK_TYPE.STRIKE).getDetailView(view);
+//        lowerDetailView.setAttack(getCurrentAttack());
     }
 
     public void toggleMode() {
@@ -56,10 +70,7 @@ implements AttackTypeToggler.Listener {
 
     private void updateViews() {
         table.setValues(getCurrentAttack());
-        if(lowerDetailView.getType() == getCurrentAttack().getType())
-            lowerDetailView.setAttack(getCurrentAttack());
-        else
-            lowerDetailView = getCurrentAttack().getDetailView(view);
+        selectDetailView(getCurrentAttack().getType());
     }
 
     //AttackTypeToggler.Listener
@@ -71,6 +82,17 @@ implements AttackTypeToggler.Listener {
         updateViews();
     }
 
-    public Attack getCurrentAttack()
-    { return item.getAttack(mode, atkType); }
+    public Attack getCurrentAttack() {
+        return item.getAttack(mode, atkType); }
+
+    private void selectDetailView(String type) {
+        for(LowerDetailView v : detailViews.values()) {
+            if(v.getType().equals(type)) {
+                v.setVisible(true);
+                currentDetailView = v; }
+            else
+                v.setVisible(false);
+        }
+        currentDetailView.setAttack(getCurrentAttack());
+    }
 }

@@ -1,6 +1,8 @@
 package frise.project.mordapp.view.custom;
 
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
 import frise.project.mordapp.R;
@@ -11,13 +13,16 @@ import frise.project.mordapp.retrofit.HELPER;
 public class LowerDetailViewThrown extends LowerDetailView {
 
     private ThrownAttack attack;
+    private View subView;
 
     //region views
     private TextView lblWood, lblStone, lblFlinch, lblProjectileSpeed, lblGravity;
     //endregion
 
-    public LowerDetailViewThrown(View parentView, Attack attack) {
-        super(parentView, attack);
+    public LowerDetailViewThrown(View parentView) {
+        super(parentView);
+        inflate(R.layout.lower_stats_throwable);
+        subView = view.findViewById(R.id.lower_stats_thrown_container);
         this.attack = (ThrownAttack)attack;
 
         //region find views
@@ -32,6 +37,11 @@ public class LowerDetailViewThrown extends LowerDetailView {
     @Override
     public String getType() {
         return ThrownAttack.TYPE; }
+
+    @Override
+    public View getSubView() {
+        return subView;
+    }
 
     @Override
     public void setAttack(Attack attack) {
