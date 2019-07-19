@@ -55,7 +55,7 @@ public class AttackTypeToggler {
         void toggle();
     }
 
-    public void setVisibility(boolean visible) {
+    public void setVisible(boolean visible) {
         if(!visible) {
             imgStrike.setVisibility(View.GONE);
             imgStab.setVisibility(View.GONE); }

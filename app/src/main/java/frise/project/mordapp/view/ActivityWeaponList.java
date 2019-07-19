@@ -40,7 +40,11 @@ implements AdapterWpn.Listener {
 
     @Override
     public void onClick(Item item) {
-        Fragment frg = new FragWpnDetail();
+        Fragment frg;
+        if(item.getAttack(Item.MODE.REGULAR, Item.ATK_TYPE.STRIKE) != null)
+            frg = new FragWpnDetail();
+        else
+            frg = new FragWpnDetailBlank();
         Bundle bundle = new Bundle();
         bundle.putSerializable(FragWpnDetail.TAG_WEAPON, item);
         frg.setArguments(bundle);

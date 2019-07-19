@@ -2,7 +2,9 @@ package frise.project.mordapp.controller;
 
 import android.icu.text.CaseMap;
 import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -31,11 +33,14 @@ implements AttackTypeToggler.Listener {
     private LowerDetailView currentDetailView;
     private Map<String, LowerDetailView> detailViews;
     private AttackTypeToggler typeToggler;
+    private Button btnToggleMode;
 
     public WpnDetailManager(View view, Item item)
     {
         this.view = view;
         this.item = item;
+
+        btnToggleMode = view.findViewById(R.id.frag_wpn_detail_btn_alt);
 
         table = new DamageTable(view.findViewById(R.id.frag_wpn_detail_table_layout));
 
@@ -49,7 +54,10 @@ implements AttackTypeToggler.Listener {
 
         detailViews = new HashMap<>();
         detailViews.put(RegularAttack.TYPE, new LowerDetailViewRegular(view));
-        detailViews.put(ThrownAttack.TYPE, new LowerDetailViewThrown(view));
+        if(item.getAttack(Item.MODE.ALT, Item.ATK_TYPE.STRIKE) != null)
+            detailViews.put(ThrownAttack.TYPE, new LowerDetailViewThrown(view));
+        else
+            btnToggleMode.setVisibility(View.GONE);
         selectDetailView(getCurrentAttack().getType());
 
 //        lowerDetailView = item.getAttack(mode, Item.ATK_TYPE.STRIKE).getDetailView(view);
@@ -57,8 +65,12 @@ implements AttackTypeToggler.Listener {
     }
 
     public void toggleMode() {
-        if(mode == Item.MODE.REGULAR)
+        typeToggler.setVisible(true);
+        if(mode == Item.MODE.REGULAR) {
             mode = Item.MODE.ALT;
+            if(item.getAttack(Item.MODE.ALT, Item.ATK_TYPE.STAB) == null) {
+                atkType = Item.ATK_TYPE.STRIKE;
+                typeToggler.setVisible(false); } }
         else mode = Item.MODE.REGULAR;
         updateViews();
     }
