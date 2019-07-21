@@ -6,15 +6,18 @@ import android.view.ViewGroup;
 
 import frise.project.mordapp.R;
 import frise.project.mordapp.model.Attack;
+import frise.project.mordapp.model.Item;
 import frise.project.mordapp.model.RegularAttack;
 
 public abstract class LowerDetailView {
 
     protected View parentView;
     protected View view;
+    protected Item item;
 
-    public LowerDetailView(View parentView) {
+    public LowerDetailView(View parentView, Item item) {
         this.parentView = parentView;
+        this.item = item;
     }
 
     public abstract String getType();

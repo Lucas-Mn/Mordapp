@@ -36,8 +36,4 @@ public class ThrownAttack extends Attack {
     @Override
     public String getType() {
         return TYPE; }
-
-    @Override
-    public LowerDetailView getDetailView(View parentView) {
-        return new LowerDetailViewThrown(parentView); }
 }

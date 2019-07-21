@@ -13,8 +13,7 @@ public class RowContainer {
 
    public List<Row> getRows(){return rows;}
 
-   public List<Item> getItems()
-   {
+   public List<Item> getItems() {
       List<Item> list = new ArrayList<>();
       int last_pos = 99999;
       int previous_index=0;
@@ -39,8 +38,7 @@ public class RowContainer {
    }
 
    @Override
-   public String toString()
-   {
+   public String toString() {
       String s = "";
       for(Row row : rows)
       {
@@ -48,5 +46,4 @@ public class RowContainer {
       }
       return s;
    }
-
 }

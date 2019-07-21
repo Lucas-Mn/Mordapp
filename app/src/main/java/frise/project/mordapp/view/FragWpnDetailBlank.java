@@ -8,14 +8,19 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import frise.project.mordapp.R;
+import frise.project.mordapp.model.Item;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class FragWpnDetailBlank extends Fragment {
 
+    private Item item;
+
+    private TextView lblDescription;
 
     public FragWpnDetailBlank() {
         // Required empty public constructor
@@ -26,7 +31,21 @@ public class FragWpnDetailBlank extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.frag_wpn_detail_blank, container, false);
+        View view = inflater.inflate(R.layout.frag_wpn_detail_blank, container, false);
+
+        Bundle bundle = getArguments();
+        item = (Item) bundle.getSerializable(FragWpnDetail.TAG_WEAPON);
+
+        //region find views
+        lblDescription = view.findViewById(R.id.frag_wpn_detail_blank_description);
+        //endregion
+
+        //region set views
+        if(item.getDescription()!=null)
+            lblDescription.setText(item.getDescription());
+        //endregion
+
+        return view;
     }
 
 }

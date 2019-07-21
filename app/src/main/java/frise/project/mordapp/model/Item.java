@@ -6,16 +6,23 @@ public class Item implements Serializable {
 
     public static final String TYPE_WEAPON = "weapon";
     public static final String TYPE_USEABLE = "useable";
+    public static final String HANDED_ONE = "One-Handed";
+    public static final String HANDED_TWO = "Two-Handed";
+    public static final String HANDED_HYBRID = "One/Two-Handed";
+    public static final String HANDED_SHIELD = "Shield";
 
     private String name;
     private int pos;
     private String type; //weapon or item
     private int cost;
+    private String handed;
     private Attack stab, strike;
     private Attack alt_stab, alt_strike;
-    private int range, alt_range;
+    private float bvth, bvtu, bvtd;
+    private String description;
 
-    public Item(String name, String type, int cost, RegularAttack stab, RegularAttack strike, RegularAttack alt_stab, RegularAttack alt_strike, int range, int alt_range) {
+    public Item(String name, String type, int cost, String handed, RegularAttack stab, RegularAttack strike, RegularAttack alt_stab, RegularAttack alt_strike,
+                int range, int alt_range, float bvth, float bvtu, float bvtd) {
         this.name = name;
         this.type = type;
         this.cost = cost;
@@ -23,8 +30,9 @@ public class Item implements Serializable {
         this.strike = strike;
         this.alt_stab = alt_stab;
         this.alt_strike = alt_strike;
-        this.range = range;
-        this.alt_range = alt_range;
+        this.bvth = bvth;
+        this.bvtu = bvtu;
+        this.bvtd = bvtd;
     }
 
     public Item(Row row)
@@ -32,6 +40,11 @@ public class Item implements Serializable {
         name = row.getName();
         pos = row.getPos();
         cost = row.getCost();
+        handed = row.getHanded();
+        bvth = row.getBlockViewHorizontal();
+        bvtu = row.getBlockViewUp();
+        bvtd = row.getBlockViewDown();
+        description = row.getDescription();
         if(row.getMode().equals(Row.MODES_REGULAR))
             if(row.getAttackType().equals(Attack.STRIKE))
                 strike = row.getAttack();
@@ -67,8 +80,11 @@ public class Item implements Serializable {
     public int getPos(){return pos;}
     public String getType(){return type;}
     public int getCost(){return cost;}
-    public int getRange(){return range;}
-    public int getAltRange(){return alt_range;}
+    public String getHanded(){return handed;}
+    public float getBlockViewToleranceHorizontal(){return bvth;}
+    public float getBlockViewToleranceUp(){return bvtu;}
+    public float getBlockViewToleranceDown(){return bvtd;}
+    public String getDescription(){return description;}
     //endregion
 
     public enum MODE { REGULAR, ALT; }
@@ -81,6 +97,19 @@ public class Item implements Serializable {
         else if(type == ATK_TYPE.STRIKE)
             return alt_strike;
         else return alt_stab;
+    }
+
+    public String getHandedShorthand()
+    {
+        if(handed.equals(HANDED_ONE))
+            return "1H";
+        if(handed.equals(HANDED_TWO))
+            return "2H";
+        if(handed.equals(HANDED_HYBRID))
+            return "1/2H";
+        if(handed.equals(HANDED_SHIELD))
+            return "Shield";
+        return "";
     }
 
 }

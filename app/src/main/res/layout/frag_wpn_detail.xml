@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true">
+<LinearLayout
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".view.FragWpnDetail"
     android:orientation="vertical"
     android:background="@color/colorMenuBackground">
@@ -221,6 +226,8 @@
     <FrameLayout
         android:id="@+id/frag_wpn_detail_lower_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></FrameLayout>
+        android:layout_height="wrap_content"></FrameLayout>
 
 </LinearLayout>
+
+</ScrollView>

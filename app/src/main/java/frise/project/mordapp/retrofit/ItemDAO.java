@@ -27,13 +27,15 @@ public class ItemDAO extends MyRetrofit {
             public void onResponse(Call<RowContainer> call, Response<RowContainer> response) {
                 if(response.body()!=null)
                     listener.finish(response.body());
-                else
+                else {
                     Log.d(HELPER.DEBUG, "response with null body, message: " + response.message());
+                    listener.error(response.message()); }
             }
 
             @Override
             public void onFailure(Call<RowContainer> call, Throwable t) {
                 Log.d(HELPER.DEBUG, "call fail: "+t.getMessage());
+                listener.error(t.getMessage());
             }
         });
         Log.d(HELPER.DEBUG, call.request().toString());

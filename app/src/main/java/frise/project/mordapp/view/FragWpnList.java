@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import frise.project.mordapp.R;
@@ -28,6 +29,7 @@ public class FragWpnList extends Fragment {
     RecyclerView.LayoutManager layoutManager;
     RecyclerView recycler;
     AdapterWpn adapter;
+    private TextView lblErrorMessage;
 
     public FragWpnList() {
         // Required empty public constructor
@@ -44,6 +46,8 @@ public class FragWpnList extends Fragment {
         layoutManager = new LinearLayoutManager(getContext());
         recycler.setLayoutManager(layoutManager);
 
+        lblErrorMessage = view.findViewById(R.id.frag_wpn_list_lbl_error_message);
+
         ItemDAO dao = new ItemDAO();
         dao.getRowContainer(new ResultListener<RowContainer>() {
             @Override
@@ -52,9 +56,13 @@ public class FragWpnList extends Fragment {
                 adapter = new AdapterWpn(container.getItems(), (AdapterWpn.Listener) getActivity());
                 recycler.setAdapter(adapter);
             }
+
+            @Override
+            public void error(String message) {
+                lblErrorMessage.setText(message);
+            }
         });
 
         return view;
     }
-
 }

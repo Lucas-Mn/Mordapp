@@ -7,9 +7,12 @@
     android:background="@color/colorMenuBackground">
 
     <TextView
+        android:id="@+id/frag_wpn_detail_blank_description"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:gravity="center"
         android:textColor="@color/colorTextWpn"
-        android:text="No stats for this item." />
+        android:text="No stats for this item."
+        android:textSize="20dp"/>
 
 </FrameLayout>

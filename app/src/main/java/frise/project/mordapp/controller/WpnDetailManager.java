@@ -53,15 +53,15 @@ implements AttackTypeToggler.Listener {
 
 
         detailViews = new HashMap<>();
-        detailViews.put(RegularAttack.TYPE, new LowerDetailViewRegular(view));
-        if(item.getAttack(Item.MODE.ALT, Item.ATK_TYPE.STRIKE) != null)
-            detailViews.put(ThrownAttack.TYPE, new LowerDetailViewThrown(view));
-        else
+        //regular attack details
+        detailViews.put(RegularAttack.TYPE, new LowerDetailViewRegular(view, item));
+        //if there is an alt mode, add thrown view if necessary
+        if(item.getAttack(Item.MODE.ALT, Item.ATK_TYPE.STRIKE) != null) {
+            if(item.getAttack(Item.MODE.ALT, Item.ATK_TYPE.STRIKE).getType() == ThrownAttack.TYPE)
+                detailViews.put(ThrownAttack.TYPE, new LowerDetailViewThrown(view, item)); }
+        else //if there is no alt mode, remove mode toggle
             btnToggleMode.setVisibility(View.GONE);
         selectDetailView(getCurrentAttack().getType());
-
-//        lowerDetailView = item.getAttack(mode, Item.ATK_TYPE.STRIKE).getDetailView(view);
-//        lowerDetailView.setAttack(getCurrentAttack());
     }
 
     public void toggleMode() {

@@ -24,7 +24,6 @@
 
         <TextView
             android:text="Block View Tolerances"
-            android:layout_gravity="center_vertical"
             style="@style/TextViewLowerDetailKey" />
 
         <LinearLayout
@@ -86,11 +85,10 @@
 
     </TableRow>
 
-    <TableRow>
+    <TableRow style="@style/LowerStatsRow">
 
         <TextView
             android:text="Turn Cap"
-            android:layout_gravity="center_vertical"
             style="@style/TextViewLowerDetailKey" />
 
         <LinearLayout
@@ -134,6 +132,124 @@
 
         </LinearLayout>
 
+    </TableRow>
+
+    <TableRow style="@style/LowerStatsRow">
+        <TextView
+            android:text="Miss Cost"
+            style="@style/TextViewLowerDetailKey" />
+        <TextView
+            android:id="@+id/stats_default_miss"
+            style="@style/TextViewLowerDetailValue"/>
+    </TableRow>
+
+    <TableRow style="@style/LowerStatsRow">
+        <TextView
+            android:text="Feint Cost"
+            style="@style/TextViewLowerDetailKey" />
+        <TextView
+            android:id="@+id/stats_default_feint"
+            style="@style/TextViewLowerDetailValue"/>
+    </TableRow>
+
+    <TableRow style="@style/LowerStatsRow">
+        <TextView
+            android:text="Morph Cost"
+            style="@style/TextViewLowerDetailKey" />
+        <TextView
+            android:id="@+id/stats_default_morph"
+            style="@style/TextViewLowerDetailValue"/>
+    </TableRow>
+
+    <TableRow style="@style/LowerStatsRow">
+        <TextView
+            android:text="Stamina Drain"
+            style="@style/TextViewLowerDetailKey" />
+        <TextView
+            android:id="@+id/stats_default_drain"
+            style="@style/TextViewLowerDetailValue"/>
+    </TableRow>
+
+    <TableRow style="@style/LowerStatsRow">
+        <TextView
+            android:text="Parry Drain Negation"
+            style="@style/TextViewLowerDetailKey" />
+        <TextView
+            android:id="@+id/stats_default_negation"
+            style="@style/TextViewLowerDetailValue"/>
+    </TableRow>
+
+    <TableRow style="@style/LowerStatsRow">
+        <TextView
+            android:text="Stop On Hit"
+            style="@style/TextViewLowerDetailKey" />
+        <TextView
+            android:id="@+id/stats_default_soh"
+            style="@style/TextViewLowerDetailValue"/>
+    </TableRow>
+
+    <TableRow style="@style/LowerStatsRow">
+        <TextView
+            android:text="Can Combo"
+            style="@style/TextViewLowerDetailKey" />
+        <TextView
+            android:id="@+id/stats_default_combo"
+            style="@style/TextViewLowerDetailValue"/>
+    </TableRow>
+
+    <TableRow style="@style/LowerStatsRow">
+        <TextView
+            android:text="Hit Knockback"
+            style="@style/TextViewLowerDetailKey"/>
+        <TextView
+            android:id="@+id/stats_default_knockback"
+            style="@style/TextViewLowerDetailValue"/>
+    </TableRow>
+
+    <TableRow style="@style/LowerStatsRow">
+
+        <TextView
+            android:text="Wood Damage"
+            style="@style/TextViewLowerDetailKey" />
+        <TextView
+            android:id="@+id/stats_default_wood"
+            style="@style/TextViewLowerDetailValue"/>
+    </TableRow>
+
+    <TableRow style="@style/LowerStatsRow">
+        <TextView
+            android:text="Stone Damage"
+            style="@style/TextViewLowerDetailKey" />
+        <TextView
+            android:id="@+id/stats_default_stone"
+            style="@style/TextViewLowerDetailValue"/>
+    </TableRow>
+
+    <TableRow style="@style/LowerStatsRow">
+        <TextView
+            android:text="Is Block Held"
+            style="@style/TextViewLowerDetailKey" />
+        <TextView
+            android:id="@+id/stats_default_block_held"
+            style="@style/TextViewLowerDetailValue"/>
+    </TableRow>
+
+    <TableRow style="@style/LowerStatsRow">
+        <TextView
+            android:text="Block Movement Restriction"
+            style="@style/TextViewLowerDetailKey" />
+        <TextView
+            android:id="@+id/stats_default_bmr"
+            style="@style/TextViewLowerDetailValue"/>
+    </TableRow>
+
+    <TableRow style="@style/LowerStatsRow">
+        <TextView
+            android:text="Can Flinch"
+            style="@style/TextViewLowerDetailKey" />
+        <TextView
+            android:id="@+id/stats_default_flinch"
+            style="@style/TextViewLowerDetailValue"/>
     </TableRow>
 
 </TableLayout>

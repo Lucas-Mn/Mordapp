@@ -11,4 +11,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"></androidx.recyclerview.widget.RecyclerView>
 
+    <TextView
+        android:id="@+id/frag_wpn_list_lbl_error_message"
+        android:gravity="center"
+        android:textColor="@color/colorTextWpn"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
 </FrameLayout>

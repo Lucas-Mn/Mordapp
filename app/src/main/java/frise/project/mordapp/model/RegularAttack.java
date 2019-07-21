@@ -12,7 +12,7 @@ public class RegularAttack extends Attack
     private int drain, negation;
     private float miss;
     private float turncapHorizontal, turncapVertical;
-    private boolean stop_on_hit;
+    private boolean stop_on_hit, can_combo, can_flinch;
     private int length;
     private int knockback, wood, stone;
     private int blockviewUp, blockviewHorizontal, blockviewDown;
@@ -22,18 +22,14 @@ public class RegularAttack extends Attack
     public String getType() {
         return TYPE; }
 
-    @Override
-    public LowerDetailView getDetailView(View parentView) {
-        return new LowerDetailViewRegular(parentView); }
-
     //region constructor
     public RegularAttack(
             int[] dmg_head, int[] dmg_chest, int[] dmg_leg,
             int windup, int release, int recovery, int combo,
             int drain, int negation, float miss,
             float turncapHorizontal, float turncapVertical,
-            boolean stop_on_hit, int length,
-            int knockback, int wood, int stone) {
+            boolean stop_on_hit, boolean can_combo, boolean can_flinch,
+            int length, int knockback, int wood, int stone) {
 
         this.dmg_head = dmg_head;
         this.dmg_chest = dmg_chest;
@@ -48,7 +44,12 @@ public class RegularAttack extends Attack
         this.turncapHorizontal = turncapHorizontal;
         this.turncapVertical = turncapVertical;
         this.stop_on_hit = stop_on_hit;
+        this.can_combo = can_combo;
         this.length = length;
+        this.can_flinch = can_flinch;
+        this.knockback = knockback;
+        this.wood = wood;
+        this.stone = stone;
         blockviewUp = 40;
         blockviewHorizontal = 55;
         blockviewDown = 55;
@@ -66,6 +67,8 @@ public class RegularAttack extends Attack
     public float getTurncapHorizontal(){return turncapHorizontal;}
     public float getTurncapVertical(){return turncapVertical;}
     public boolean isStop_on_hit(){return stop_on_hit;}
+    public boolean canCombo(){return can_combo;}
+    public boolean canFlinch(){return can_flinch;}
     public int getLenght(){return length;}
     public int getKnockback(){return knockback;}
     public int getWoodDamage(){return wood;}

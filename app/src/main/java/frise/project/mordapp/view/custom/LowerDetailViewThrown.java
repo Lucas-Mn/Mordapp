@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import frise.project.mordapp.R;
 import frise.project.mordapp.model.Attack;
+import frise.project.mordapp.model.Item;
 import frise.project.mordapp.model.ThrownAttack;
 import frise.project.mordapp.retrofit.HELPER;
 
@@ -19,8 +20,8 @@ public class LowerDetailViewThrown extends LowerDetailView {
     private TextView lblWood, lblStone, lblFlinch, lblProjectileSpeed, lblGravity;
     //endregion
 
-    public LowerDetailViewThrown(View parentView) {
-        super(parentView);
+    public LowerDetailViewThrown(View parentView, Item item) {
+        super(parentView, item);
         inflate(R.layout.lower_stats_throwable);
         subView = view.findViewById(R.id.lower_stats_thrown_container);
         this.attack = (ThrownAttack)attack;
