@@ -1,5 +1,7 @@
 package frise.project.mordapp.model;
 
+import androidx.room.Entity;
+
 public class Row {
 
     //region helpers
@@ -26,10 +28,10 @@ public class Row {
     private int length, kb, wood, stone;
     private String soh, comboes, flinch;
     private float bvtu, bvth, bvtd;
-    private String heldBlock;
+    private String heldblock;
     private String bmr;
     private int projectile_speed;
-    private float gravity_scale;
+    private int gravity_scale;
     private int maxAmmo;
     private String description; //only used for useable items
     //endregion
@@ -54,10 +56,10 @@ public class Row {
     public float getBlockViewUp(){return bvtu;}
     public float getBlockViewHorizontal(){return bvth;}
     public float getBlockViewDown(){return bvtd;}
-    public boolean getHeldBlock(){return heldBlock=="Yes";}
+    public boolean getHeldBlock(){return heldblock=="Yes";}
     //bmr?
     public int getProjectileSpeed(){return projectile_speed;}
-    public float getGravityScale(){return gravity_scale;}
+    public int getGravityScale(){return gravity_scale;}
     public int getMaxAmmo(){return maxAmmo;}
     public String getDescription(){return description;}
     //endregion
@@ -113,7 +115,7 @@ public class Row {
                 kb, wood, stone,
                 soh, comboes, flinch,
                 bvtu, bvth, bvtd,
-                heldBlock, bmr, projectile_speed,
+                heldblock, bmr, projectile_speed,
                 gravity_scale, maxAmmo, description);
     }
 
@@ -139,7 +141,7 @@ public class Row {
         kb = r.nextLineInt(); wood = r.nextLineInt(); stone = r.nextLineInt();
         soh = r.nextLine(); comboes = r.nextLine(); flinch = r.nextLine();
         bvtu = r.nextLineFloat(); bvth = r.nextLineFloat(); bvtd = r.nextLineFloat();
-        heldBlock = r.nextLine(); bmr = r.nextLine(); projectile_speed = r.nextLineInt();
+        heldblock = r.nextLine(); bmr = r.nextLine(); projectile_speed = r.nextLineInt();
         gravity_scale = r.nextLineInt(); maxAmmo = r.nextLineInt(); description = r.nextLine();
     }
 

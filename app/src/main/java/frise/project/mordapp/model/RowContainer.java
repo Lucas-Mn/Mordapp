@@ -3,6 +3,7 @@ package frise.project.mordapp.model;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import frise.project.mordapp.retrofit.HELPER;
@@ -10,6 +11,11 @@ import frise.project.mordapp.retrofit.HELPER;
 public class RowContainer {
 
    private List<Row> rows;
+
+   public RowContainer(Row[] rows) {
+      this.rows = new ArrayList<Row>(Arrays.asList(rows));
+   }
+   public RowContainer(List<Row> rows) { this.rows = rows; }
 
    public List<Row> getRows(){return rows;}
 
@@ -33,7 +39,6 @@ public class RowContainer {
             last_pos = t.getPos();
          }
       }
-      Log.d(HELPER.DEBUG, "item list with "+list.size());
       return list;
    }
 

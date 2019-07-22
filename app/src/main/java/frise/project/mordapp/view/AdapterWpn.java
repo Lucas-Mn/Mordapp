@@ -25,6 +25,11 @@ public class AdapterWpn extends RecyclerView.Adapter {
         this.listener = listener;
     }
 
+    public void setItems(List<Item> items) {
+        this.items = items;
+        notifyDataSetChanged();
+    }
+
     @NonNull @Override
     public WpnViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         WpnViewHolder vh = new WpnViewHolder(LayoutInflater.from(parent.getContext())
