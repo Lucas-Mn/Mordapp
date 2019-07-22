@@ -13,14 +13,12 @@ public class ItemDAO extends MyRetrofit {
 
     private RowService service;
 
-    public ItemDAO()
-    {
+    public ItemDAO() {
         super();
         service = retrofit.create(RowService.class);
     }
 
-    public void getRowContainer(final ResultListener<RowContainer> listener)
-    {
+    public void getRowContainer(final ResultListener<RowContainer> listener) {
         Call<RowContainer> call = service.getRows(HELPER.GSID, false);
         call.enqueue(new Callback<RowContainer>() {
             @Override

@@ -23,6 +23,7 @@ import frise.project.mordapp.view.custom.LowerDetailViewThrown;
 public class WpnDetailManager
 implements AttackTypeToggler.Listener {
 
+    //region variables
     private Item.MODE mode = Item.MODE.REGULAR;
     private Item.ATK_TYPE atkType = Item.ATK_TYPE.STRIKE;
 
@@ -34,9 +35,9 @@ implements AttackTypeToggler.Listener {
     private Map<String, LowerDetailView> detailViews;
     private AttackTypeToggler typeToggler;
     private Button btnToggleMode;
+    //endregion
 
-    public WpnDetailManager(View view, Item item)
-    {
+    public WpnDetailManager(View view, Item item) {
         this.view = view;
         this.item = item;
 
@@ -64,6 +65,7 @@ implements AttackTypeToggler.Listener {
         selectDetailView(getCurrentAttack().getType());
     }
 
+    //region controls
     public void toggleMode() {
         typeToggler.setVisible(true);
         if(mode == Item.MODE.REGULAR) {
@@ -80,22 +82,20 @@ implements AttackTypeToggler.Listener {
         updateViews();
     }
 
-    private void updateViews() {
-        table.setValues(getCurrentAttack());
-        selectDetailView(getCurrentAttack().getType());
-    }
-
     //AttackTypeToggler.Listener
-    @Override
-    public void toggle() {
+    @Override public void toggle() {
         if(atkType== Item.ATK_TYPE.STRIKE)
             atkType = Item.ATK_TYPE.STAB;
         else atkType = Item.ATK_TYPE.STRIKE;
         updateViews();
     }
+    //endregion
 
-    public Attack getCurrentAttack() {
-        return item.getAttack(mode, atkType); }
+    //region private methods
+    private void updateViews() {
+        table.setValues(getCurrentAttack());
+        selectDetailView(getCurrentAttack().getType());
+    }
 
     private void selectDetailView(String type) {
         for(LowerDetailView v : detailViews.values()) {
@@ -107,4 +107,10 @@ implements AttackTypeToggler.Listener {
         }
         currentDetailView.setAttack(getCurrentAttack());
     }
+    //endregion
+
+    //region public info
+    public Attack getCurrentAttack() {
+        return item.getAttack(mode, atkType); }
+    //endregion
 }

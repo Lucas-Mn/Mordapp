@@ -50,8 +50,7 @@ public class DamageTable {
         view.setVisibility(visibility ? View.VISIBLE : View.GONE);
     }
 
-    private void handleNullAttack()
-    {
+    private void handleNullAttack() {
         Log.d(HELPER.DEBUG, "passed null attack to DamageTable");
     }
 }

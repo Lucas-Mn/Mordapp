@@ -13,8 +13,7 @@ import frise.project.mordapp.R;
 @SuppressLint("AppCompatCustomView")
 public class TextViewDmg extends TextView {
 
-    public TextViewDmg(Context context, AttributeSet attrs)
-    {
+    public TextViewDmg(Context context, AttributeSet attrs) {
         super(context, attrs);
         this.addTextChangedListener(new TextWatcher() {
             @Override

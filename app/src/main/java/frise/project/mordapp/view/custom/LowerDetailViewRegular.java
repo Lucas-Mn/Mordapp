@@ -14,6 +14,7 @@ import frise.project.mordapp.retrofit.HELPER;
 
 public class LowerDetailViewRegular extends LowerDetailView {
 
+    //region views
     private TextView lblBlockviewUp, lblBlockviewHorizontal, lblBlockviewDown,
             lblLength, lblTurncapH, lblTurncapV,
             lblMiss, lblFeint, lblMorph,
@@ -22,6 +23,7 @@ public class LowerDetailViewRegular extends LowerDetailView {
             lblBlockHeld, lblBMR, lblFlinch;
     private RegularAttack attack;
     private View subView;
+    //endregion
 
     public LowerDetailViewRegular(View parentView, Item item) {
         super(parentView, item);

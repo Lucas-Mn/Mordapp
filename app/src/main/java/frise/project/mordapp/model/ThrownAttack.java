@@ -7,10 +7,12 @@ import frise.project.mordapp.view.custom.LowerDetailViewThrown;
 
 public class ThrownAttack extends Attack {
 
+    //region attributes
     private int wood, stone;
     private boolean flinch;
     private int projectile_speed;
     private float gravity_scale;
+    //endregion
 
     //region getters
     public int getWoodDamage(){return wood;}
@@ -20,8 +22,7 @@ public class ThrownAttack extends Attack {
     public float getGravityScale(){return gravity_scale;}
     //endregion
 
-    public ThrownAttack(int[] dmg_head, int[] dmg_chest, int[] dmg_leg,
-                        int wood, int stone, String flinch, int projectile_speed, float gravity_scale) {
+    public ThrownAttack(int[] dmg_head, int[] dmg_chest, int[] dmg_leg, int wood, int stone, String flinch, int projectile_speed, float gravity_scale) {
         this.dmg_head = dmg_head;
         this.dmg_chest = dmg_chest;
         this.dmg_leg = dmg_leg;
@@ -33,7 +34,6 @@ public class ThrownAttack extends Attack {
     }
 
     public static final String TYPE = "Thrown";
-    @Override
-    public String getType() {
+    @Override public String getType() {
         return TYPE; }
 }

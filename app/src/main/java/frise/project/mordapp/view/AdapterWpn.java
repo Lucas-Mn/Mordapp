@@ -25,8 +25,7 @@ public class AdapterWpn extends RecyclerView.Adapter {
         this.listener = listener;
     }
 
-    @NonNull
-    @Override
+    @NonNull @Override
     public WpnViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         WpnViewHolder vh = new WpnViewHolder(LayoutInflater.from(parent.getContext())
             .inflate(R.layout.reycler_cell_weapon, parent, false));

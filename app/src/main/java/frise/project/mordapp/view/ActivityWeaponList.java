@@ -29,8 +29,7 @@ implements AdapterWpn.Listener {
         pegarFragment(new FragWpnList());
     }
 
-    void pegarFragment(Fragment frag)
-    {
+    void pegarFragment(Fragment frag) {
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
         ft.addToBackStack(null);

@@ -2,6 +2,12 @@ package frise.project.mordapp.model;
 
 public class Row {
 
+    //region helpers
+    public static final String MODES_REGULAR = "Regular";
+    public static final String MODES_ALT = "Alt";
+    //endregion
+
+    //region attributes
     private int listposition;
     private String name;
     private int cost;
@@ -26,7 +32,9 @@ public class Row {
     private float gravity_scale;
     private int maxAmmo;
     private String description; //only used for useable items
+    //endregion
 
+    //region getters
     public String getName(){return name;}
     public int getPos(){return listposition;}
     public int getCost(){return cost;}
@@ -52,7 +60,7 @@ public class Row {
     public float getGravityScale(){return gravity_scale;}
     public int getMaxAmmo(){return maxAmmo;}
     public String getDescription(){return description;}
-
+    //endregion
 
     public Attack getAttack()
     {
@@ -89,9 +97,7 @@ public class Row {
         return atk;
     }
 
-    public static final String MODES_REGULAR = "Regular";
-    public static final String MODES_ALT = "Alt";
-
+    //region String Builder
     @Override
     public String toString() {
         return buildString(
@@ -165,5 +171,6 @@ public class Row {
             return nextLine().equals("Yes");
         }
     }
+    //endregion
 
 }
