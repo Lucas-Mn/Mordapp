@@ -57,7 +57,7 @@ public class Row {
     public float getBlockViewHorizontal(){return bvth;}
     public float getBlockViewDown(){return bvtd;}
     public boolean getHeldBlock(){return heldblock=="Yes";}
-    //bmr?
+    public String getBmr(){return bmr;}
     public int getProjectileSpeed(){return projectile_speed;}
     public int getGravityScale(){return gravity_scale;}
     public int getMaxAmmo(){return maxAmmo;}
@@ -84,17 +84,19 @@ public class Row {
 
         Attack atk;
 
-        if(!attacktype.equals(ThrownAttack.TYPE))
+        if(attacktype.equals(RegularAttack.STRIKE) || attacktype.equals(RegularAttack.STAB))
             atk = new RegularAttack(dmg_head, dmg_chest, dmg_legs
                                     ,windup, release, recovery, combo,
                                     drain, negation, miss,
                                     tch, tcv,
                                     getStopOnHit(), getCanCombo(), getCanFlinch(), length,
                                     kb, wood, stone);
-        else
+        else if(attacktype.equals(ThrownAttack.TYPE))
             atk = new ThrownAttack(dmg_head, dmg_chest, dmg_legs,
                                     wood, stone, flinch,
                                     projectile_speed, gravity_scale);
+        else //if(attacktype.equals(ShieldAttack.TYPE))
+            atk = new ShieldAttack(tcv, tch, negation);
 
         return atk;
     }

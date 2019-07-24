@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import frise.project.mordapp.R;
 import frise.project.mordapp.model.Item;
+import frise.project.mordapp.model.RegularAttack;
 import frise.project.mordapp.model.RowContainer;
 import frise.project.mordapp.retrofit.HELPER;
 import frise.project.mordapp.retrofit.ItemDAO;
@@ -40,8 +41,10 @@ implements AdapterWpn.Listener {
     @Override
     public void onClick(Item item) {
         Fragment frg;
-        if(item.getAttack(Item.MODE.REGULAR, Item.ATK_TYPE.STRIKE) != null)
+        if(item.getType().equals(RegularAttack.STRIKE) || item.getType().equals(RegularAttack.STAB))
             frg = new FragWpnDetail();
+        else if(item.getType().equals(item.TYPE_SHIELD))
+            frg = new FragWpnDetailShield();
         else
             frg = new FragWpnDetailBlank();
         Bundle bundle = new Bundle();

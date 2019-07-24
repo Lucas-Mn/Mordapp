@@ -7,6 +7,7 @@ public class Item implements Serializable {
     //region helpers
     public static final String TYPE_WEAPON = "weapon";
     public static final String TYPE_USEABLE = "useable";
+    public static final String TYPE_SHIELD = "Shield";
     public static final String HANDED_ONE = "One-Handed";
     public static final String HANDED_TWO = "Two-Handed";
     public static final String HANDED_HYBRID = "One/Two-Handed";
@@ -22,6 +23,8 @@ public class Item implements Serializable {
     private Attack stab, strike;
     private Attack alt_stab, alt_strike;
     private float bvth, bvtu, bvtd;
+    private boolean heldBlock;
+    private String bmr;
     private String description;
     //endregion
 
@@ -34,6 +37,8 @@ public class Item implements Serializable {
     public float getBlockViewToleranceHorizontal(){return bvth;}
     public float getBlockViewToleranceUp(){return bvtu;}
     public float getBlockViewToleranceDown(){return bvtd;}
+    public boolean isBlockHeld(){return heldBlock;}
+    public String getBmr(){return bmr;}
     public String getDescription(){return description;}
     //endregion
 
@@ -61,18 +66,21 @@ public class Item implements Serializable {
         bvth = row.getBlockViewHorizontal();
         bvtu = row.getBlockViewUp();
         bvtd = row.getBlockViewDown();
+        heldBlock = row.getHeldBlock();
+        bmr = row.getBmr();
         description = row.getDescription();
         if(row.getMode().equals(Row.MODES_REGULAR))
             if(row.getAttackType().equals(Attack.STRIKE))
                 strike = row.getAttack();
             else if(row.getAttackType().equals(Attack.STAB))
                 stab = row.getAttack();
+            else strike = row.getAttack();
         else
             if(row.getAttackType().equals(Attack.STRIKE))
                 alt_strike = row.getAttack();
             else if(row.getAttackType().equals(Attack.STAB))
                 alt_stab = row.getAttack();
-        type = row.getAttackType()=="Use"?TYPE_USEABLE:TYPE_WEAPON;
+        type = row.getAttackType();
     }
     //endregion
 
@@ -109,6 +117,7 @@ public class Item implements Serializable {
 
     public enum MODE { REGULAR, ALT; }
     public enum ATK_TYPE { STRIKE, STAB; }
+    public Attack getAttack(){ return strike; }
     public Attack getAttack(MODE mode, ATK_TYPE type) {
         if(mode == MODE.REGULAR)
             if(type == ATK_TYPE.STRIKE)

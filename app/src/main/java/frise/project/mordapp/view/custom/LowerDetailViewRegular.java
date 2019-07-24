@@ -85,6 +85,7 @@ public class LowerDetailViewRegular extends LowerDetailView {
         lblNegation.setText(String.valueOf(attack.getNegation()));
         lblSOH.setText(HELPER.boolToYN(attack.isStop_on_hit()));
         lblCombo.setText(HELPER.boolToYN(attack.canCombo()));
+        lblKnockback.setText(String.valueOf(attack.getKnockback()));
         lblWood.setText(String.valueOf(attack.getWoodDamage()));
         lblStone.setText(String.valueOf(attack.getStoneDamage()));
         lblBlockHeld.setText("No");
