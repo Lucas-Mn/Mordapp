@@ -3,6 +3,8 @@ package frise.project.mordapp.view;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -10,23 +12,27 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import frise.project.mordapp.R;
 import frise.project.mordapp.model.Item;
 
-public class AdapterWpn extends RecyclerView.Adapter {
+public class AdapterWpn extends RecyclerView.Adapter implements Filterable {
 
-    private List<Item> items;
+    private List<Item> items, all_items;
     private Listener listener;
 
+    private CharSequence filter = "";
+
     public AdapterWpn(List<Item> items, Listener listener) {
+        this.all_items = items;
         this.items = items;
         this.listener = listener;
     }
 
     public void setItems(List<Item> items) {
-        this.items = items;
+        this.all_items = items;
         notifyDataSetChanged();
     }
 
@@ -53,6 +59,27 @@ public class AdapterWpn extends RecyclerView.Adapter {
     @Override
     public int getItemCount() {
         return items.size();
+    }
+
+    @Override
+    public Filter getFilter(){
+        return new Filter(){
+
+            @Override
+            protected FilterResults performFiltering(CharSequence charSequence) {
+                filter = charSequence;
+                items = new ArrayList<>();
+                for(Item item : all_items)
+                    if(item.getName().toLowerCase().contains(charSequence))
+                        items.add(item);
+                FilterResults results = new FilterResults();
+                results.values = items;
+                return results; }
+
+            @Override
+            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+                items = (List<Item>) filterResults.values;
+                notifyDataSetChanged(); } };
     }
 
     public static class WpnViewHolder extends RecyclerView.ViewHolder {

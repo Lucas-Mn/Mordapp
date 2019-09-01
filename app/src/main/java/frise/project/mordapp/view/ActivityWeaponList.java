@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import frise.project.mordapp.R;
@@ -27,10 +28,10 @@ implements AdapterWpn.Listener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weapon_list);
 
-        pegarFragment(new FragWpnList());
+        setFrag(new FragWpnList());
     }
 
-    void pegarFragment(Fragment frag) {
+    void setFrag(Fragment frag) {
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
         ft.addToBackStack(null);
@@ -50,6 +51,6 @@ implements AdapterWpn.Listener {
         Bundle bundle = new Bundle();
         bundle.putSerializable(FragWpnDetail.TAG_WEAPON, item);
         frg.setArguments(bundle);
-        pegarFragment(frg);
+        setFrag(frg);
     }
 }

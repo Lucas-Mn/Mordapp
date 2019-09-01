@@ -4,6 +4,7 @@ import android.icu.text.CaseMap;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.util.HashMap;
@@ -34,7 +35,7 @@ implements AttackTypeToggler.Listener {
     private LowerDetailView currentDetailView;
     private Map<String, LowerDetailView> detailViews;
     private AttackTypeToggler typeToggler;
-    private Button btnToggleMode;
+    private ImageView btnToggleMode;
     //endregion
 
     public WpnDetailManager(View view, Item item) {
@@ -95,6 +96,8 @@ implements AttackTypeToggler.Listener {
     private void updateViews() {
         table.setValues(getCurrentAttack());
         selectDetailView(getCurrentAttack().getType());
+        btnToggleMode.setImageResource(mode == Item.MODE.REGULAR
+                ? R.drawable.checkbox_off : R.drawable.checkbox_on);
     }
 
     private void selectDetailView(String type) {

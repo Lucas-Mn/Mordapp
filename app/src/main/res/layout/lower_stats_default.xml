@@ -27,6 +27,7 @@
             style="@style/TextViewLowerDetailKey" />
 
         <LinearLayout
+            android:background="@color/colorValueBackground"
             android:orientation="vertical"
             android:layout_marginLeft="5dp"
             android:layout_weight="1"
@@ -92,6 +93,7 @@
             style="@style/TextViewLowerDetailKey" />
 
         <LinearLayout
+            android:background="@color/colorValueBackground"
             android:orientation="vertical"
             android:layout_marginLeft="5dp"
             android:layout_weight="1"

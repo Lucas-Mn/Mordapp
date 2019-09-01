@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorCellBackground">#121212</color>
     <color name="colorMenuBackground">#1A1A1A</color>
+    <color name="colorValueBackground">#212121</color>
     <color name="colorTextWpn">#898971</color>
     <color name="colorTextSecondary">#898971</color>
     <color name="colorAccent">#D81B60</color>

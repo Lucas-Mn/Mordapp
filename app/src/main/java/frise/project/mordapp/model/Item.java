@@ -57,8 +57,7 @@ public class Item implements Serializable {
         this.bvtd = bvtd;
     }
 
-    public Item(Row row)
-    {
+    public Item(Row row) {
         name = row.getName();
         pos = row.getPos();
         cost = row.getCost();
@@ -102,8 +101,7 @@ public class Item implements Serializable {
                 alt_strike = row.getAttack(); }
     }
 
-    public String getHandedShorthand()
-    {
+    public String getHandedShorthand() {
         if(handed.equals(HANDED_ONE))
             return "1H";
         if(handed.equals(HANDED_TWO))
@@ -129,5 +127,9 @@ public class Item implements Serializable {
     }
     //endregion
 
+    @Override
+    public String toString(){
+        return name;
+    }
 
 }

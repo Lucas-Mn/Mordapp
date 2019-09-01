@@ -26,13 +26,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <Button
-            android:id="@+id/frag_wpn_detail_btn_alt"
+        <TextView
+            android:id="@+id/frag_wpn_detail_lbl_alt"
+            style="@style/TextViewLowerDetailKey"
             android:text="ALT"
-            android:layout_toLeftOf="@id/frag_wpn_detail_btn_strike"
-            android:layout_marginRight="20dp"
+            android:textSize="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
+
+        <ImageView
+            android:id="@+id/frag_wpn_detail_btn_alt"
+            android:src="@drawable/checkbox_off"
+            android:layout_toRightOf="@+id/frag_wpn_detail_lbl_alt"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp" />
 
         <ImageView
             android:id="@+id/frag_wpn_detail_btn_strike"

@@ -37,6 +37,7 @@ public class ItemController {
         daoGSX.getRowContainer(new ResultListener<RowContainer>() {
             @Override
             public void finish(RowContainer container) {
+                Log.d(HELPER.DEBUG, "ItemController got items from GSX: "+container.getItems());
                 //store in cache
                 roomDao.clearTable();
                 for(Row row : container.getRows())

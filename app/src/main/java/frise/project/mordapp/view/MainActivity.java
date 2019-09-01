@@ -16,10 +16,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        pegarFragment(new FragWpnList());
+        pasteFragment(new FragWpnList());
     }
 
-    void pegarFragment(Fragment frag) {
+    void pasteFragment(Fragment frag) {
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
         ft.addToBackStack(null);

@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import frise.project.mordapp.R;
@@ -33,9 +34,12 @@ public class FragWpnDetail extends Fragment {
     private TextView lblName;
     private DamageTable table;
     private AttackTypeToggler togglerAtk;
-    private Button btnAlt;
+    private ImageView btnAlt;
+    private TextView lblAlt;
 
     private WpnDetailManager wpnManager;
+
+    private boolean alt = false;
 
     public FragWpnDetail() {
         // Required empty public constructor
@@ -54,11 +58,16 @@ public class FragWpnDetail extends Fragment {
         lblName = view.findViewById(R.id.frag_wpn_detail_name);
         table = new DamageTable(view.findViewById(R.id.frag_wpn_detail_table_layout));
         btnAlt = view.findViewById(R.id.frag_wpn_detail_btn_alt);
+        lblAlt = view.findViewById(R.id.frag_wpn_detail_lbl_alt);
         //endregion
 
         //region update views
         lblName.setText(item.getName());
         btnAlt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                toggleAlt(); }});
+        lblAlt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 toggleAlt(); }});
@@ -70,6 +79,5 @@ public class FragWpnDetail extends Fragment {
     }
 
     private void toggleAlt() {
-        wpnManager.toggleMode();
-    }
+        wpnManager.toggleMode(); }
 }

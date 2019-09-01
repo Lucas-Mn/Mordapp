@@ -11,23 +11,11 @@
         style="@style/LowerStatsRow">
 
         <TextView
-            android:text="Length"
-            style="@style/TextViewLowerDetailKey" />
-
-        <TextView
-            android:id="@+id/stats_default_length"
-            style="@style/TextViewLowerDetailValue" />
-
-    </TableRow>
-
-    <TableRow
-        style="@style/LowerStatsRow">
-
-        <TextView
             android:text="Block View Tolerances"
             style="@style/TextViewLowerDetailKey" />
 
         <LinearLayout
+            android:background="@color/colorValueBackground"
             android:orientation="vertical"
             android:layout_marginLeft="5dp"
             android:layout_weight="1"
@@ -93,6 +81,7 @@
             style="@style/TextViewLowerDetailKey" />
 
         <LinearLayout
+            android:background="@color/colorValueBackground"
             android:orientation="vertical"
             android:layout_marginLeft="5dp"
             android:layout_weight="1"

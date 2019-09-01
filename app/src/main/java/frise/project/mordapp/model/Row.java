@@ -1,6 +1,10 @@
 package frise.project.mordapp.model;
 
+import android.util.Log;
+
 import androidx.room.Entity;
+
+import frise.project.mordapp.retrofit.HELPER;
 
 public class Row {
 
@@ -10,16 +14,16 @@ public class Row {
     //endregion
 
     //region attributes
-    private int listposition;
+    private int pos;
     private String name;
     private int cost;
     private String handed;
     private String mode;
     private String attacktype;
-    private int head, chest, legs,
-                head_2, chest_2, legs_2,
-                head_3, chest_3, legs_3,
-                head_4, chest_4, legs_4;
+    private int head0, chest0, legs0,
+                head1, chest1, legs1,
+                head2, chest2, legs2,
+                head3, chest3, legs3;
     private int windup, release, recovery, combo;
     private int drain, negation;
     private float miss;
@@ -38,7 +42,7 @@ public class Row {
 
     //region getters
     public String getName(){return name;}
-    public int getPos(){return listposition;}
+    public int getPos(){return pos;}
     public int getCost(){return cost;}
     public String getHanded(){return handed;}
     public String getMode(){return mode;}
@@ -50,13 +54,13 @@ public class Row {
     public int getKnockback(){return kb;}
     public int getWoodDamage(){return wood;}
     public int getStoneDamage(){return stone;}
-    public boolean getStopOnHit(){return soh=="Yes";}
-    public boolean getCanCombo(){return comboes=="Yes";}
-    public boolean getCanFlinch(){return flinch=="Yes";}
+    public boolean getStopOnHit(){return soh.equals("Yes");}
+    public boolean getCanCombo(){return comboes.equals("Yes");}
+    public boolean getCanFlinch(){return flinch.equals("Yes");}
     public float getBlockViewUp(){return bvtu;}
     public float getBlockViewHorizontal(){return bvth;}
     public float getBlockViewDown(){return bvtd;}
-    public boolean getHeldBlock(){return heldblock=="Yes";}
+    public boolean getHeldBlock(){return heldblock.equals("Yes");}
     public String getBmr(){return bmr;}
     public int getProjectileSpeed(){return projectile_speed;}
     public int getGravityScale(){return gravity_scale;}
@@ -64,23 +68,22 @@ public class Row {
     public String getDescription(){return description;}
     //endregion
 
-    public Attack getAttack()
-    {
+    public Attack getAttack() {
         int[] dmg_head = new int[4];
-        dmg_head[0] = head;
-        dmg_head[1] = head_2;
-        dmg_head[2] = head_3;
-        dmg_head[3] = head_4;
+        dmg_head[0] = head0;
+        dmg_head[1] = head1;
+        dmg_head[2] = head2;
+        dmg_head[3] = head3;
         int[] dmg_chest = new int[4];
-        dmg_chest[0] = chest;
-        dmg_chest[1] = chest_2;
-        dmg_chest[2] = chest_3;
-        dmg_chest[3] = chest_4;
+        dmg_chest[0] = chest0;
+        dmg_chest[1] = chest1;
+        dmg_chest[2] = chest2;
+        dmg_chest[3] = chest3;
         int[] dmg_legs = new int[4];
-        dmg_legs[0] = legs;
-        dmg_legs[1] = legs_2;
-        dmg_legs[2] = legs_3;
-        dmg_legs[3] = legs_4;
+        dmg_legs[0] = legs0;
+        dmg_legs[1] = legs1;
+        dmg_legs[2] = legs2;
+        dmg_legs[3] = legs3;
 
         Attack atk;
 
@@ -96,7 +99,7 @@ public class Row {
                                     wood, stone, flinch,
                                     projectile_speed, gravity_scale);
         else //if(attacktype.equals(ShieldAttack.TYPE))
-            atk = new ShieldAttack(tcv, tch, negation);
+            atk = new ShieldAttack(bvtu, bvth, bvtd, tcv, tch, negation, getHeldBlock(), bmr);
 
         return atk;
     }
@@ -105,12 +108,12 @@ public class Row {
     @Override
     public String toString() {
         return buildString(
-                listposition, name, cost,
+                pos, name, cost,
                 handed, mode, attacktype,
-                head, chest, legs,
-                head_2, chest_2, legs_2,
-                head_3, chest_3, legs_3,
-                head_4, chest_4, legs_4,
+                head0, chest0, legs0,
+                head1, chest1, legs1,
+                head2, chest2, legs2,
+                head3, chest3, legs3,
                 windup, combo, release, recovery,
                 drain, negation, miss,
                 tch, tcv, length,
@@ -131,12 +134,12 @@ public class Row {
 
     public Row(String string) {
         LineReader r = new LineReader(string);
-        listposition = r.nextLineInt(); name = r.nextLine(); cost = r.nextLineInt();
+        pos = r.nextLineInt(); name = r.nextLine(); cost = r.nextLineInt();
         handed = r.nextLine(); mode = r.nextLine(); attacktype = r.nextLine();
-        head = r.nextLineInt(); chest = r.nextLineInt(); legs = r.nextLineInt();
-        head_2 = r.nextLineInt(); chest_2 = r.nextLineInt(); legs_2 = r.nextLineInt();
-        head_3 = r.nextLineInt(); chest_3 = r.nextLineInt(); legs_3 = r.nextLineInt();
-        head_4 = r.nextLineInt(); chest_4 = r.nextLineInt(); legs_4 = r.nextLineInt();
+        head0 = r.nextLineInt(); chest0 = r.nextLineInt(); legs0 = r.nextLineInt();
+        head1 = r.nextLineInt(); chest1 = r.nextLineInt(); legs1 = r.nextLineInt();
+        head2 = r.nextLineInt(); chest2 = r.nextLineInt(); legs2 = r.nextLineInt();
+        head3 = r.nextLineInt(); chest3 = r.nextLineInt(); legs3 = r.nextLineInt();
         windup = r.nextLineInt(); combo = r.nextLineInt(); release = r.nextLineInt(); recovery = r.nextLineInt();
         drain = r.nextLineInt(); negation = r.nextLineInt(); miss = r.nextLineFloat();
         tch = r.nextLineFloat(); tcv = r.nextLineFloat(); length = r.nextLineInt();

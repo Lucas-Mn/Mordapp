@@ -23,22 +23,16 @@ public class RowContainer {
       List<Item> list = new ArrayList<>();
       int last_pos = 99999;
       int previous_index=0;
-      for(Row row : rows)
-      {
+      for(Row row : rows) {
          if(row.getPos()==0)
             break;
          if(row.getPos()==last_pos)
-         {
             list.get(previous_index).addRow(row);
-         }
-         else
-         {
+         else {
             Item t = new Item(row);
             list.add(t);
             previous_index = list.indexOf(t);
-            last_pos = t.getPos();
-         }
-      }
+            last_pos = t.getPos(); } }
       return list;
    }
 
