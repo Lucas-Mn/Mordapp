@@ -1,10 +1,6 @@
 package frise.project.mordapp.model;
 
-import android.util.Log;
-
-import androidx.room.Entity;
-
-import frise.project.mordapp.retrofit.HELPER;
+import com.google.gson.annotations.SerializedName;
 
 public class Row {
 
@@ -19,7 +15,8 @@ public class Row {
     private int cost;
     private String handed;
     private String mode;
-    private String attacktype;
+    @SerializedName("attacktype")
+    private String attack_type;
     private int head0, chest0, legs0,
                 head1, chest1, legs1,
                 head2, chest2, legs2,
@@ -31,12 +28,17 @@ public class Row {
     private float tch, tcv;
     private int length, kb, wood, stone;
     private String soh, comboes, flinch;
+    //block view tolerances (up, horizontal, down)
     private float bvtu, bvth, bvtd;
-    private String heldblock;
+    @SerializedName("heldblock")
+    private String held_block;
     private String bmr;
+    @SerializedName("projectilespeed")
     private int projectile_speed;
-    private int gravity_scale;
-    private int maxAmmo;
+    @SerializedName("gravityscale")
+    private float gravity_scale;
+    @SerializedName("maxammo")
+    private int max_ammo;
     private String description; //only used for useable items
     //endregion
 
@@ -46,7 +48,7 @@ public class Row {
     public int getCost(){return cost;}
     public String getHanded(){return handed;}
     public String getMode(){return mode;}
-    public String getAttackType(){return attacktype;}
+    public String getAttackType(){return attack_type;}
     //windup to negation
     public float getTurncapHorizontal(){return tch;}
     public float getTurncapVertical(){return tcv;}
@@ -60,11 +62,11 @@ public class Row {
     public float getBlockViewUp(){return bvtu;}
     public float getBlockViewHorizontal(){return bvth;}
     public float getBlockViewDown(){return bvtd;}
-    public boolean getHeldBlock(){return heldblock.equals("Yes");}
+    public boolean getHeldBlock(){return held_block.equals("Yes");}
     public String getBmr(){return bmr;}
     public int getProjectileSpeed(){return projectile_speed;}
-    public int getGravityScale(){return gravity_scale;}
-    public int getMaxAmmo(){return maxAmmo;}
+    public float getGravityScale(){return gravity_scale;}
+    public int getMaxAmmo(){return max_ammo;}
     public String getDescription(){return description;}
     //endregion
 
@@ -87,18 +89,18 @@ public class Row {
 
         Attack atk;
 
-        if(attacktype.equals(RegularAttack.STRIKE) || attacktype.equals(RegularAttack.STAB))
+        if(attack_type.equals(RegularAttack.STRIKE) || attack_type.equals(RegularAttack.STAB))
             atk = new RegularAttack(dmg_head, dmg_chest, dmg_legs
                                     ,windup, release, recovery, combo,
                                     drain, negation, miss,
                                     tch, tcv,
                                     getStopOnHit(), getCanCombo(), getCanFlinch(), length,
                                     kb, wood, stone);
-        else if(attacktype.equals(ThrownAttack.TYPE))
+        else if(attack_type.equals(ThrownAttack.TYPE))
             atk = new ThrownAttack(dmg_head, dmg_chest, dmg_legs,
                                     wood, stone, flinch,
                                     projectile_speed, gravity_scale);
-        else //if(attacktype.equals(ShieldAttack.TYPE))
+        else //if(attack_type.equals(ShieldAttack.TYPE))
             atk = new ShieldAttack(bvtu, bvth, bvtd, tcv, tch, negation, getHeldBlock(), bmr);
 
         return atk;
@@ -109,7 +111,7 @@ public class Row {
     public String toString() {
         return buildString(
                 pos, name, cost,
-                handed, mode, attacktype,
+                handed, mode, attack_type,
                 head0, chest0, legs0,
                 head1, chest1, legs1,
                 head2, chest2, legs2,
@@ -120,8 +122,8 @@ public class Row {
                 kb, wood, stone,
                 soh, comboes, flinch,
                 bvtu, bvth, bvtd,
-                heldblock, bmr, projectile_speed,
-                gravity_scale, maxAmmo, description);
+                held_block, bmr, projectile_speed,
+                gravity_scale, max_ammo, description);
     }
 
     private static final String SEPARATOR = "|";
@@ -135,7 +137,7 @@ public class Row {
     public Row(String string) {
         LineReader r = new LineReader(string);
         pos = r.nextLineInt(); name = r.nextLine(); cost = r.nextLineInt();
-        handed = r.nextLine(); mode = r.nextLine(); attacktype = r.nextLine();
+        handed = r.nextLine(); mode = r.nextLine(); attack_type = r.nextLine();
         head0 = r.nextLineInt(); chest0 = r.nextLineInt(); legs0 = r.nextLineInt();
         head1 = r.nextLineInt(); chest1 = r.nextLineInt(); legs1 = r.nextLineInt();
         head2 = r.nextLineInt(); chest2 = r.nextLineInt(); legs2 = r.nextLineInt();
@@ -146,8 +148,8 @@ public class Row {
         kb = r.nextLineInt(); wood = r.nextLineInt(); stone = r.nextLineInt();
         soh = r.nextLine(); comboes = r.nextLine(); flinch = r.nextLine();
         bvtu = r.nextLineFloat(); bvth = r.nextLineFloat(); bvtd = r.nextLineFloat();
-        heldblock = r.nextLine(); bmr = r.nextLine(); projectile_speed = r.nextLineInt();
-        gravity_scale = r.nextLineInt(); maxAmmo = r.nextLineInt(); description = r.nextLine();
+        held_block = r.nextLine(); bmr = r.nextLine(); projectile_speed = r.nextLineInt();
+        gravity_scale = r.nextLineFloat(); max_ammo = r.nextLineInt(); description = r.nextLine();
     }
 
     private class LineReader {

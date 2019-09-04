@@ -1,6 +1,8 @@
 package frise.project.mordapp.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Item implements Serializable {
 
@@ -8,10 +10,13 @@ public class Item implements Serializable {
     public static final String TYPE_WEAPON = "weapon";
     public static final String TYPE_USEABLE = "useable";
     public static final String TYPE_SHIELD = "Shield";
+    public static final String TYPE_THROWN = "Thrown";
     public static final String HANDED_ONE = "One-Handed";
     public static final String HANDED_TWO = "Two-Handed";
     public static final String HANDED_HYBRID = "One/Two-Handed";
     public static final String HANDED_SHIELD = "Shield";
+
+    public enum ARMOUR_PIECE { head, chest, leg }
     //endregion
 
     //region attributes
@@ -124,6 +129,32 @@ public class Item implements Serializable {
         else if(type == ATK_TYPE.STRIKE)
             return alt_strike;
         else return alt_stab;
+    }
+
+    public Integer getHtk(ARMOUR_PIECE armour_piece, int armour_level){
+        List<Integer> values = new ArrayList<>();
+        for(Attack atk : getAttacks()) //get HTK for each attack
+            if(atk != null && atk.getType()!=ShieldAttack.TYPE && !atk.getDmg(armour_piece, armour_level).equals(0))
+                values.add( (int)Math.ceil(100f / (float)atk.getDmg(armour_piece, armour_level)));
+        if(values.size() == 0) return 101; //if no attack does damage
+        Integer ret = 101;
+        for(Integer x : values) //set ret to lowest value
+            if(ret == null || x < ret)
+                ret = x;
+        return ret;
+    }
+
+    public List<Attack> getAttacks(){
+        List<Attack> attacks = new ArrayList<>();
+        if(getAttack(MODE.REGULAR, ATK_TYPE.STRIKE) != null)
+            attacks.add(getAttack(MODE.REGULAR, ATK_TYPE.STRIKE));
+        if(getAttack(MODE.REGULAR, ATK_TYPE.STAB) != null)
+            attacks.add(getAttack(MODE.REGULAR, ATK_TYPE.STAB));
+        if(getAttack(MODE.ALT, ATK_TYPE.STRIKE) != null)
+            attacks.add(getAttack(MODE.ALT, ATK_TYPE.STRIKE));
+        if(getAttack(MODE.ALT, ATK_TYPE.STRIKE) != null)
+            attacks.add(getAttack(MODE.ALT, ATK_TYPE.STAB));
+        return attacks;
     }
     //endregion
 

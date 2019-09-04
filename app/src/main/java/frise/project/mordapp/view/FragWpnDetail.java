@@ -8,19 +8,13 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import frise.project.mordapp.R;
-import frise.project.mordapp.controller.WpnDetailManager;
 import frise.project.mordapp.model.Item;
-import frise.project.mordapp.model.RegularAttack;
 import frise.project.mordapp.view.custom.AttackTypeToggler;
 import frise.project.mordapp.view.custom.DamageTable;
-import frise.project.mordapp.view.custom.LowerDetailView;
-import frise.project.mordapp.view.custom.LowerDetailViewRegular;
 
 /**
  * A simple {@link Fragment} subclass.

@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.FragWpnDetailThrown"
+    android:orientation="vertical"
+    android:background="@color/colorMenuBackground">
+
+    <TextView
+        android:id="@+id/frag_wpn_detail_name"
+        android:text="WEAPON NAME"
+        android:textSize="25dp"
+        android:textColor="@color/colorTextWpn"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TableLayout
+        android:id="@+id/frag_wpn_detail_table_layout"
+        android:layout_margin="25dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TableRow
+            android:layout_margin="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:src="@drawable/thumbnail_tier_0"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:src="@drawable/thumbnail_tier_1"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:src="@drawable/thumbnail_tier_2"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:src="@drawable/thumbnail_tier_3"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_margin="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/frag_wpn_detail_tbl_head_img_armour"
+                android:src="@drawable/thumbnail_body_head"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+            <frise.project.mordapp.view.custom.TextViewDmg
+                android:id="@+id/frag_wpn_detail_tbl_head_lbl_0"
+                style="@style/TextViewDmg"
+                />
+
+            <frise.project.mordapp.view.custom.TextViewDmg
+                android:id="@+id/frag_wpn_detail_tbl_head_lbl_1"
+                style="@style/TextViewDmg"
+                />
+
+            <frise.project.mordapp.view.custom.TextViewDmg
+                android:id="@+id/frag_wpn_detail_tbl_head_lbl_2"
+                style="@style/TextViewDmg"
+                />
+
+            <frise.project.mordapp.view.custom.TextViewDmg
+                android:id="@+id/frag_wpn_detail_tbl_head_lbl_3"
+                style="@style/TextViewDmg"
+                />
+
+            <ImageView
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_margin="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/frag_wpn_detail_tbl_body_img_armour"
+                android:src="@drawable/thumbnail_body_chest"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+            <frise.project.mordapp.view.custom.TextViewDmg
+                android:id="@+id/frag_wpn_detail_tbl_body_lbl_0"
+                style="@style/TextViewDmg"
+                />
+
+            <frise.project.mordapp.view.custom.TextViewDmg
+                android:id="@+id/frag_wpn_detail_tbl_body_lbl_1"
+                style="@style/TextViewDmg"
+                />
+
+            <frise.project.mordapp.view.custom.TextViewDmg
+                android:id="@+id/frag_wpn_detail_tbl_body_lbl_2"
+                style="@style/TextViewDmg"
+                />
+
+            <frise.project.mordapp.view.custom.TextViewDmg
+                android:id="@+id/frag_wpn_detail_tbl_body_lbl_3"
+                style="@style/TextViewDmg"
+                />
+
+            <ImageView
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_margin="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/frag_wpn_detail_tbl_leg_img_armour"
+                android:src="@drawable/thumbnail_body_legs"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+            <frise.project.mordapp.view.custom.TextViewDmg
+                android:id="@+id/frag_wpn_detail_tbl_leg_lbl_0"
+                style="@style/TextViewDmg"
+                />
+
+            <frise.project.mordapp.view.custom.TextViewDmg
+                android:id="@+id/frag_wpn_detail_tbl_leg_lbl_1"
+                style="@style/TextViewDmg"
+                />
+
+            <frise.project.mordapp.view.custom.TextViewDmg
+                android:id="@+id/frag_wpn_detail_tbl_leg_lbl_2"
+                style="@style/TextViewDmg"
+                />
+
+            <frise.project.mordapp.view.custom.TextViewDmg
+                android:id="@+id/frag_wpn_detail_tbl_leg_lbl_3"
+                style="@style/TextViewDmg"
+                />
+
+            <ImageView
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+        </TableRow>
+    </TableLayout>
+
+    <FrameLayout
+        android:id="@+id/frag_wpn_detail_lower_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></FrameLayout>
+
+</LinearLayout>

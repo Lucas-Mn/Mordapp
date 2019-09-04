@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorPrimary">#1A1A1A</color>
+    <color name="colorPrimaryDark">#121212</color>
     <color name="colorCellBackground">#121212</color>
     <color name="colorMenuBackground">#1A1A1A</color>
     <color name="colorValueBackground">#212121</color>
     <color name="colorTextWpn">#898971</color>
     <color name="colorTextSecondary">#898971</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorAccent">#D9BF64</color>
     <color name="colorTextLowerDetail">#929292</color>
     <color name="colorDmg100">#311818</color>
     <color name="colorDmgTxt100">#D07227</color>

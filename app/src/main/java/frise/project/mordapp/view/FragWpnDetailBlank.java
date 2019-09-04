@@ -20,7 +20,7 @@ public class FragWpnDetailBlank extends Fragment {
 
     private Item item;
 
-    private TextView lblDescription;
+    private TextView lblTitle, lblDescription;
 
     public FragWpnDetailBlank() {
         // Required empty public constructor
@@ -37,12 +37,16 @@ public class FragWpnDetailBlank extends Fragment {
         item = (Item) bundle.getSerializable(FragWpnDetail.TAG_WEAPON);
 
         //region find views
+        lblTitle = view.findViewById(R.id.frag_wpn_detail_name);
         lblDescription = view.findViewById(R.id.frag_wpn_detail_blank_description);
         //endregion
 
         //region set views
         if(item.getDescription()!=null)
-            lblDescription.setText(item.getDescription());
+            if(item.getDescription().equals("0"))
+                lblDescription.setText("No description available for this item.");
+            else
+                lblDescription.setText(item.getDescription());
         //endregion
 
         return view;

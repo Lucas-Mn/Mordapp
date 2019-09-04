@@ -24,7 +24,6 @@ public class LowerDetailViewThrown extends LowerDetailView {
         super(parentView, item);
         inflate(R.layout.lower_stats_throwable);
         subView = view.findViewById(R.id.lower_stats_thrown_container);
-        this.attack = (ThrownAttack)attack;
 
         //region find views
         lblWood = view.findViewById(R.id.stats_throwable_wood_damage);

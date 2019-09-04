@@ -1,26 +1,30 @@
 package frise.project.mordapp.view;
 
+import android.os.Build;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import frise.project.mordapp.R;
 import frise.project.mordapp.model.Item;
+import frise.project.mordapp.retrofit.HELPER;
 
 public class AdapterWpn extends RecyclerView.Adapter implements Filterable {
 
-    private List<Item> items, all_items;
+    private List<Item> items, all_items, original_order_items;
     private Listener listener;
 
     private CharSequence filter = "";
@@ -28,12 +32,14 @@ public class AdapterWpn extends RecyclerView.Adapter implements Filterable {
     public AdapterWpn(List<Item> items, Listener listener) {
         this.all_items = items;
         this.items = items;
+        this.original_order_items = items;
         this.listener = listener;
     }
 
     public void setItems(List<Item> items) {
         this.all_items = items;
-        notifyDataSetChanged();
+        this.items = items;
+        this.original_order_items = items;
     }
 
     @NonNull @Override
@@ -82,6 +88,30 @@ public class AdapterWpn extends RecyclerView.Adapter implements Filterable {
                 notifyDataSetChanged(); } };
     }
 
+    //region orders
+    public void orderRegular(){
+        all_items = original_order_items;
+    }
+
+    public void orderDamage(final Item.ARMOUR_PIECE armour_piece, final int armour_level, boolean ascending) {
+        Comparator<Item> comparator =
+                (Item item, Item t1) -> item.getHtk(armour_piece, armour_level).compareTo(t1.getHtk(armour_piece, armour_level));
+        if(!ascending)
+            if(Build.VERSION.SDK_INT >= 24) //minimum SDK for comparator.reversed()
+                Collections.sort(all_items, comparator.reversed());
+            else{
+                List<Item> unreversed_list = new ArrayList<>(original_order_items);
+                Collections.sort(unreversed_list, comparator);
+                List<Item> reversed_list = new ArrayList<>();
+                for(int i = unreversed_list.size() - 1; i >= 0; ++i)
+                    reversed_list.add(unreversed_list.get(i)); }
+        else
+            Collections.sort(all_items, comparator);
+        notifyDataSetChanged();
+        Log.d(HELPER.DEBUG, "Ordered weapon list by " + armour_piece.toString() + " - " + armour_level + (ascending ? " ascending order" : " descending order")); }
+
+    //endregion
+
     public static class WpnViewHolder extends RecyclerView.ViewHolder {
         private static boolean shorthandHanded = true;
 
@@ -103,8 +133,8 @@ public class AdapterWpn extends RecyclerView.Adapter implements Filterable {
         }
     }
 
-    public interface Listener
-    { void onClick(Item item); }
+    public interface Listener {
+        void onClick(Item item); }
 
     public static final int getCostImg(int cost) {
         if(cost == 1) return R.drawable.thumbnail_cost_1;

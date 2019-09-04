@@ -23,6 +23,7 @@ public class FragWpnDetailShield extends Fragment {
     private Item item;
 
     private ViewGroup detailContainer;
+    private TextView lblTitle;
     private TextView lblBvtUp, lblBvtHorizontal, lblBvtDown,
         lblTurncapVertical, lblTurncapHorizontal,
         lblNegation, lblBlockHeld, lblBmr;
@@ -44,6 +45,7 @@ public class FragWpnDetailShield extends Fragment {
         //region find views
         detailContainer = view.findViewById(R.id.frag_wpn_shield_container);
         LayoutInflater.from(getContext()).inflate(R.layout.lower_stats_shield, detailContainer);
+        lblTitle = view.findViewById(R.id.frag_wpn_detail_name);
         lblBvtUp = detailContainer.findViewById(R.id.stats_shield_blockview_up);
         lblBvtHorizontal = detailContainer.findViewById(R.id.stats_shield_blockview_horizontal);
         lblBvtDown = detailContainer.findViewById(R.id.stats_shield_blockview_down);
@@ -55,6 +57,7 @@ public class FragWpnDetailShield extends Fragment {
         //endregion
 
         //region set views
+        lblTitle.setText(item.getName());
         lblBvtUp.setText(String.valueOf(item.getBlockViewToleranceUp()));
         lblBvtHorizontal.setText(String.valueOf(item.getBlockViewToleranceHorizontal()));
         lblBvtDown.setText(String.valueOf(item.getBlockViewToleranceDown()));

@@ -6,10 +6,21 @@
     android:orientation="vertical"
     tools:context=".view.FragWpnList">
 
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/frag_wpn_list_search"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"></androidx.appcompat.widget.SearchView>
+    <androidx.appcompat.widget.Toolbar
+        style="@style/Toolbar">
+
+        <ImageView
+            android:id="@+id/frag_wpn_list_toolbar_nav"
+            android:src="@drawable/ic_toolbar_nav"
+            style="@style/ToolbarButton" />
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/frag_wpn_list_search"
+            android:layout_margin="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"></androidx.appcompat.widget.SearchView>
+
+    </androidx.appcompat.widget.Toolbar>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/frag_wpn_list_recycler"
